@@ -76,6 +76,7 @@ void Game::Render(unsigned int shader3D)
     glUniform3f(glGetUniformLocation(shader3D, "vColor"), 1.0f, 0.9f, 0.0f);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
+    // todo: add random angle to throw objects
     // ====== FALLING (亮红色) ======
     for (auto &o : falling)
     {

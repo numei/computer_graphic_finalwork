@@ -17,7 +17,7 @@ bool mousePressed = false;
 static float survivalTime = 0.0f;
 
 glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.6f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 bool firstMouse = true;
 float yaw = -90.0f; // yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
@@ -25,71 +25,23 @@ float pitch = 0.0f;
 float lastX = 800.0f / 2.0;
 float lastY = 600.0f / 2.0;
 float aspect = 45.0f;
+
+bool firstPerson = false;
+int lastV = GLFW_RELEASE;
 enum class State
 {
     MENU,
     PLAYING,
     GAMEOVER
 };
-void key_cb(GLFWwindow *w, int key, int sc, int action, int mods)
-{
-    if (action == GLFW_PRESS)
-        keys[key] = true;
-    else if (action == GLFW_RELEASE)
-        keys[key] = false;
-}
-// todo: enable mouse look
-void cursor_cb(GLFWwindow *w, double x, double y)
-{
-    float xpos = static_cast<float>(x);
-    float ypos = static_cast<float>(y);
+State state = State::MENU;
 
-    if (firstMouse)
-    {
-        lastX = xpos;
-        lastY = ypos;
-        firstMouse = false;
-    }
-
-    float xoffset = xpos - lastX;
-    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
-    lastX = xpos;
-    lastY = ypos;
-
-    float sensitivity = 0.1f; // change this value to your liking
-    xoffset *= sensitivity;
-    yoffset *= sensitivity;
-
-    yaw += xoffset;
-    pitch += yoffset;
-
-    // make sure that when pitch is out of bounds, screen doesn't get flipped
-    if (pitch > 89.0f)
-        pitch = 89.0f;
-    if (pitch < -89.0f)
-        pitch = -89.0f;
-
-    glm::vec3 front;
-    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-    front.y = sin(glm::radians(pitch));
-    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-    cameraFront = glm::normalize(front);
-}
-void mouse_cb(GLFWwindow *w, int button, int action, int mods)
-{
-    if (button == GLFW_MOUSE_BUTTON_LEFT)
-        mousePressed = (action == GLFW_PRESS);
-}
-// todo: enable zoom with scrollwheel
-void scroll_callback(GLFWwindow *window, double xoffset, double yoffset)
-{
-    if (aspect >= 1.0f && aspect <= 45.0f)
-        aspect -= yoffset;
-    if (aspect <= 1.0f)
-        aspect = 1.0f;
-    if (aspect >= 45.0f)
-        aspect = 45.0f;
-}
+void key_cb(GLFWwindow *w, int key, int sc, int action, int mods);
+void scroll_cb(GLFWwindow *w, double xoff, double yoff);
+void cursor_cb(GLFWwindow *w, double xpos, double ypos);
+void mouse_cb(GLFWwindow *w, int button, int action, int mods);
+void firstPersonInit();
+void thirdPersonInit();
 
 int main()
 {
@@ -117,14 +69,14 @@ int main()
     glfwSetKeyCallback(win, key_cb);
     glfwSetCursorPosCallback(win, cursor_cb);
     glfwSetMouseButtonCallback(win, mouse_cb);
-
+    glfwSetScrollCallback(win, scroll_cb);
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cerr << "glad failed\n";
         return -1;
     }
     glEnable(GL_DEPTH_TEST);
-    // todo: add object shader, cat shader
+    // todo: add object shader, cat shader by Assimp
     // compile shaders
     Shader shader3D("/Users/mumei/Desktop/computer_graphic_finalwork/opengl/shaders/basic.vs", "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/shaders/basic.fs");
     Shader shaderText("/Users/mumei/Desktop/computer_graphic_finalwork/opengl/shaders/text.vs", "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/shaders/text.fs");
@@ -169,9 +121,6 @@ int main()
     Game game;
     game.Reset();
     auto last = std::chrono::high_resolution_clock::now();
-    State state = State::MENU;
-    bool firstPerson = false;
-    int lastV = GLFW_RELEASE;
 
     while (!glfwWindowShouldClose(win))
     {
@@ -183,6 +132,10 @@ int main()
         if (keys[GLFW_KEY_V] && lastV == GLFW_RELEASE)
         {
             firstPerson = !firstPerson;
+            if (firstPerson)
+                firstPersonInit();
+            else
+                thirdPersonInit();
             lastV = GLFW_PRESS;
         }
         if (!keys[GLFW_KEY_V])
@@ -240,20 +193,19 @@ int main()
         glClearColor(0.08f, 0.05f, 0.03f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // todo: camera and thrown objects fixed, controlled oject(cat) move
         //  Setup projection / view
         glm::mat4 proj = glm::perspective(glm::radians(aspect), (float)W / H, 0.1f, 100.0f);
         glm::mat4 view;
         if (firstPerson)
         {
             glm::vec3 camPos = game.player.pos + glm::vec3(0.0f, 0.6f, 0.0f);
-            glm::vec3 camTarget = game.player.pos + glm::vec3(0.0f, 0.6f, -1.0f);
-            view = glm::lookAt(camPos, camTarget, glm::vec3(0, 1, 0));
+            view = glm::lookAt(camPos, camPos + cameraFront, cameraUp);
         }
         else
         {
             glm::vec3 camPos = game.player.pos + glm::vec3(0.0f, 5.0f, 8.0f);
-            view = glm::lookAt(camPos, glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+            // fixed or unfixed camera
+            view = glm::lookAt(glm::vec3(0.0f, 5.0f, 8.0f), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
         }
         if (state == State::PLAYING)
         {
@@ -277,6 +229,7 @@ int main()
             // draw panel using UI::Render that uses text shader
             // first draw background panels if needed (UI::Render renders buttons)
             bool gameOver = (state == State::GAMEOVER);
+            firstPerson = false;
             ui.Render(winW, winH, shaderText.ID, gameOver);
             if (state == State::MENU)
             {
@@ -302,4 +255,75 @@ int main()
 
     glfwTerminate();
     return 0;
+}
+
+void key_cb(GLFWwindow *w, int key, int sc, int action, int mods)
+{
+    if (action == GLFW_PRESS)
+        keys[key] = true;
+    else if (action == GLFW_RELEASE)
+        keys[key] = false;
+}
+void cursor_cb(GLFWwindow *w, double x, double y)
+{
+    float xpos = static_cast<float>(x);
+    float ypos = static_cast<float>(y);
+
+    if (firstMouse)
+    {
+        lastX = xpos;
+        lastY = ypos;
+        firstMouse = false;
+    }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+    lastX = xpos;
+    lastY = ypos;
+
+    float sensitivity = 0.1f; // change this value to your liking
+    xoffset *= sensitivity;
+    yoffset *= sensitivity;
+
+    yaw += xoffset;
+    pitch += yoffset;
+
+    // make sure that when pitch is out of bounds, screen doesn't get flipped
+    if (pitch > 89.0f)
+        pitch = 89.0f;
+    if (pitch < -89.0f)
+        pitch = -89.0f;
+
+    glm::vec3 front;
+    front.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+    front.y = sin(glm::radians(pitch));
+    front.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+    cameraFront = glm::normalize(front);
+}
+void mouse_cb(GLFWwindow *w, int button, int action, int mods)
+{
+    if (button == GLFW_MOUSE_BUTTON_LEFT)
+        mousePressed = (action == GLFW_PRESS);
+}
+void scroll_cb(GLFWwindow *window, double xoffset, double yoffset)
+{
+    if (firstPerson == true)
+        return;
+    if (aspect >= 1.0f && aspect <= 45.0f)
+        aspect -= yoffset;
+    if (aspect <= 1.0f)
+        aspect = 1.0f;
+    if (aspect >= 45.0f)
+        aspect = 45.0f;
+}
+void thirdPersonInit()
+{
+    yaw = -90.0f; // yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
+    pitch = 0.0f;
+    lastX = 800.0f / 2.0;
+    lastY = 600.0f / 2.0;
+}
+void firstPersonInit()
+{
+    aspect = 45.0f;
 }

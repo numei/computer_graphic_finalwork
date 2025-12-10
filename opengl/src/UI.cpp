@@ -35,7 +35,6 @@ void UI::UpdateMouse(float mouseNDCx, float mouseNDCy, bool mouseDown, int winW,
     prev = mouseDown;
     if (!clicked)
         return;
-    // std::cout << "Mouse NDC: " << mouseNDCx << ", " << mouseNDCy << std::endl;
     *outAction = 0;
 
     // Update hover state in NDC

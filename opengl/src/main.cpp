@@ -4,19 +4,19 @@
 #include <chrono>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-
+#include <mach-o/dyld.h>
+#include <unistd.h>
 #include "Shader.h"
 #include "TextRenderer.h"
 #include "UI.h"
 #include "Game.h"
 
-const int WINW = 980, WINH = 620;
+const int WINW = 1280, WINH = 920;
 bool keys[1024] = {0};
 bool mousePressed = false;
 
 static float survivalTime = 0.0f;
 
-glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.6f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 bool firstMouse = true;
@@ -25,7 +25,8 @@ float pitch = 0.0f;
 float lastX = 800.0f / 2.0;
 float lastY = 600.0f / 2.0;
 float aspect = 45.0f;
-
+static glm::vec3 smoothCamPos = glm::vec3(0.0f, 5.0f, 8.0f);
+static glm::vec3 camVel = glm::vec3(0.0f);
 bool firstPerson = false;
 int lastV = GLFW_RELEASE;
 enum class State
@@ -42,6 +43,21 @@ void cursor_cb(GLFWwindow *w, double xpos, double ypos);
 void mouse_cb(GLFWwindow *w, int button, int action, int mods);
 void firstPersonInit();
 void thirdPersonInit();
+
+std::string GetExecutableDir()
+{
+    char path[1024];
+    uint32_t size = sizeof(path);
+    _NSGetExecutablePath(path, &size);
+
+    char resolved[1024];
+    realpath(path, resolved);
+
+    // 去掉可执行文件名
+    std::string full(resolved);
+    size_t pos = full.find_last_of("/");
+    return full.substr(0, pos);
+}
 
 int main()
 {
@@ -78,14 +94,18 @@ int main()
     glEnable(GL_DEPTH_TEST);
     // todo: add object shader, cat shader by Assimp
     // compile shaders
-    Shader shader3D("/Users/mumei/Desktop/computer_graphic_finalwork/opengl/shaders/basic.vs", "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/shaders/basic.fs");
-    Shader shaderText("/Users/mumei/Desktop/computer_graphic_finalwork/opengl/shaders/text.vs", "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/shaders/text.fs");
+    std::string base = GetExecutableDir();
 
-    // create cube VAO/VBO (36 vertices) - reusing MakeCubeVerts inline
-    // we create and bind once
-    // create vertex data
+    Shader shader3D(
+        (base + "/shaders/basic.vs").c_str(),
+        (base + "/shaders/basic.fs").c_str());
+
+    // font.Load(base + "/assets/Roboto.ttf");
+    // Shader shader3D("shaders/basic.vs", "shaders/basic.fs");
+
+    Shader shaderText((base + "/shaders/text.vs").c_str(), (base + "/shaders/text.fs").c_str());
+
     std::vector<float> data;
-    // generate cube vertices here (same as earlier helper); to keep file short, produce simple cube vertices:
     float cubeVerts[] = {
         -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f,
         0.5f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f, -0.5f, -0.5f, -0.5f,
@@ -117,7 +137,7 @@ int main()
 
     // Create Text renderer and UI
     UI ui;
-    ui.Init("/Users/mumei/Desktop/computer_graphic_finalwork/opengl/asserts/Roboto-Regular.ttf", 48); // ensure assets/Roboto-Regular.ttf exists relative to build dir
+    ui.Init((base + "/asserts/Roboto-Regular.ttf").c_str(), 48); // ensure assets/Roboto-Regular.ttf exists relative to build dir
     Game game;
     game.Reset();
     auto last = std::chrono::high_resolution_clock::now();
@@ -203,9 +223,17 @@ int main()
         }
         else
         {
-            glm::vec3 camPos = game.player.pos + glm::vec3(0.0f, 5.0f, 8.0f);
-            // fixed or unfixed camera
-            view = glm::lookAt(glm::vec3(0.0f, 5.0f, 8.0f), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
+            glm::vec3 offset = glm::vec3(0.0f, 4.0f, 14.0f);
+
+            // smooth follow (lerp)
+            glm::vec3 desiredPos = game.player.pos + offset;
+            float followSpeed = 6.0f;
+            float t = glm::clamp(followSpeed * dt, 0.0f, 1.0f);
+            smoothCamPos = glm::mix(smoothCamPos, desiredPos, t);
+
+            // look at slightly above player center
+            glm::vec3 camTarget = game.player.pos + glm::vec3(0.0f, 0.6f, 0.0f);
+            view = glm::lookAt(smoothCamPos, camTarget, glm::vec3(0, 1, 0));
         }
         if (state == State::PLAYING)
         {

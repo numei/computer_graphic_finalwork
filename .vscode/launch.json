@@ -1,0 +1,20 @@
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [],
+  "args": [
+    "-g",
+    "-std=c++17",
+    "-I${workspaceFolder}/include", // 头文件
+    "-L${workspaceFolder}/lib", // 库文件路径
+    "-o",
+    "${workspaceFolder}/build/${fileBasenameNoExtension}.exe", // 输出路径
+    "${file}",
+    "-lglad", // 链接 glad
+    "-lglfw", // 链接 glfw
+    "-lopengl32", // 链接 opengl32
+    "-lfreeglut" // 链接 freeglut
+  ]
+}

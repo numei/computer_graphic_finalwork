@@ -16,6 +16,8 @@ include_directories(${HEADER_DIR} ${LIB_DIR})
 set(GLFW_LINK ${LIB_DIR}libglfw.3.dylib)
 link_libraries(${GLFW_LINK})
 
+
+
 # 执行编译命令
 set(SOURCES ${SRC_DIR}/glad.c ${SRC_DIR}/TextRenderer.cpp ${SRC_DIR}/UI.cpp  ${SRC_DIR}/Player.cpp ${SRC_DIR}/Game.cpp ${SRC_DIR}/main.cpp)
 set(HEADERS ${SRC_DIR}/Shader.h ${SRC_DIR}/TextRenderer.h ${SRC_DIR}/UI.h ${SRC_DIR}/Player.h ${SRC_DIR}/Game.h)
@@ -27,6 +29,19 @@ add_executable(HelloGL ${SOURCES})
 if (APPLE)
     target_link_libraries(HelloGL "-framework OpenGL")
 endif()
+
+set(RESOURCE_DIRS
+    shaders
+    asserts
+)
+
+foreach(dir ${RESOURCE_DIRS})
+    add_custom_command(TARGET HelloGL POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/${dir}
+        ${CMAKE_CURRENT_BINARY_DIR}/${dir}
+    )
+endforeach()
 
 include(CTest)
 enable_testing()

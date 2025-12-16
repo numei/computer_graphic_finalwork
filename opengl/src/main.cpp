@@ -100,9 +100,6 @@ int main()
         (base + "/shaders/basic.vs").c_str(),
         (base + "/shaders/basic.fs").c_str());
 
-    // font.Load(base + "/assets/Roboto.ttf");
-    // Shader shader3D("shaders/basic.vs", "shaders/basic.fs");
-
     Shader shaderText((base + "/shaders/text.vs").c_str(), (base + "/shaders/text.fs").c_str());
 
     std::vector<float> data;

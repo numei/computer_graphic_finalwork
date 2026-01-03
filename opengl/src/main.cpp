@@ -4,8 +4,16 @@
 #include <chrono>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#ifdef __APPLE__
 #include <mach-o/dyld.h>
 #include <unistd.h>
+#elif _WIN32
+#include <windows.h>
+#include <direct.h>
+#else
+#include <unistd.h>
+#include <limits.h>
+#endif
 #include "Shader.h"
 #include "TextRenderer.h"
 #include "UI.h"
@@ -46,17 +54,36 @@ void thirdPersonInit();
 
 std::string GetExecutableDir()
 {
+#ifdef _WIN32
+    // Windows platform
+    char path[MAX_PATH];
+    GetModuleFileNameA(NULL, path, MAX_PATH);
+    std::string full(path);
+    size_t pos = full.find_last_of("\\/");
+    return full.substr(0, pos);
+#elif __APPLE__
+    // macOS platform
     char path[1024];
     uint32_t size = sizeof(path);
     _NSGetExecutablePath(path, &size);
-
+    
     char resolved[1024];
     realpath(path, resolved);
-
-    // 去掉可执行文件名
+    
     std::string full(resolved);
     size_t pos = full.find_last_of("/");
     return full.substr(0, pos);
+#else
+    // Linux platform
+    char path[PATH_MAX];
+    ssize_t count = readlink("/proc/self/exe", path, PATH_MAX);
+    if (count != -1) {
+        std::string full(path);
+        size_t pos = full.find_last_of("/");
+        return full.substr(0, pos);
+    }
+    return ".";
+#endif
 }
 
 int main()

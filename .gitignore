@@ -1,0 +1,65 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Build directories
+build/
+out/
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# Compiled files
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+!opengl/lib/*.lib
+!opengl/lib/*.dll
+!opengl/lib/*.dylib
+!opengl/lib/*.a
+
+# IDE files
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+*.cache
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+

@@ -9,7 +9,7 @@ public:
     glm::vec3 color;
 
     float moveSpeed = 5.0f;
-    float groundY = 0.5f; // 默认玩家所在高度
+    float groundY = 0.5f; // Default player height
 
 public:
     Player() {}

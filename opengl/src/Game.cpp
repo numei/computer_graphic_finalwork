@@ -81,14 +81,14 @@ void Game::Update(float dt, const bool keys[1024], const glm::vec3 &cameraFront,
 
     const float floorHalf = 12.0f * 0.5f; // = 6.0f
 
-    // 玩家半径（0.6 缩放的 cube）
+    // Player radius (0.6 scaled cube)
     const float playerHalf = 0.3f;
 
-    // 限制 X、Z 位置保持在地面内部
+    // Clamp X, Z positions to stay within floor bounds
     player.pos.x = glm::clamp(player.pos.x, -floorHalf + playerHalf, floorHalf - playerHalf);
     player.pos.z = glm::clamp(player.pos.z, -floorHalf + playerHalf, floorHalf - playerHalf);
 
-    // 强制 Y 不动（保持水平移动）
+    // Force Y to stay fixed (horizontal movement only)
     player.pos.y = player.groundY;
 
     // ---------- Spawn and falling updates ----------

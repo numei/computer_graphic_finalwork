@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/HelloGL.dir/src/Audio.cpp.o"
+  "CMakeFiles/HelloGL.dir/src/Audio.cpp.o.d"
   "CMakeFiles/HelloGL.dir/src/Game.cpp.o"
   "CMakeFiles/HelloGL.dir/src/Game.cpp.o.d"
   "CMakeFiles/HelloGL.dir/src/Player.cpp.o"

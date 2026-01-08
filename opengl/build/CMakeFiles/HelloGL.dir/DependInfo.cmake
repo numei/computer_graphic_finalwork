@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/glad.c" "CMakeFiles/HelloGL.dir/src/glad.c.o" "gcc" "CMakeFiles/HelloGL.dir/src/glad.c.o.d"
+  "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Audio.cpp" "CMakeFiles/HelloGL.dir/src/Audio.cpp.o" "gcc" "CMakeFiles/HelloGL.dir/src/Audio.cpp.o.d"
   "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Game.cpp" "CMakeFiles/HelloGL.dir/src/Game.cpp.o" "gcc" "CMakeFiles/HelloGL.dir/src/Game.cpp.o.d"
   "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Player.cpp" "CMakeFiles/HelloGL.dir/src/Player.cpp.o" "gcc" "CMakeFiles/HelloGL.dir/src/Player.cpp.o.d"
   "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/TextRenderer.cpp" "CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o" "gcc" "CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o.d"

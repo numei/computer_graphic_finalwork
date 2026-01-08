@@ -72,10 +72,24 @@ include CMakeFiles/HelloGL.dir/flags.make
 CMakeFiles/HelloGL.dir/codegen:
 .PHONY : CMakeFiles/HelloGL.dir/codegen
 
+CMakeFiles/HelloGL.dir/src/Audio.cpp.o: CMakeFiles/HelloGL.dir/flags.make
+CMakeFiles/HelloGL.dir/src/Audio.cpp.o: /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Audio.cpp
+CMakeFiles/HelloGL.dir/src/Audio.cpp.o: CMakeFiles/HelloGL.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/HelloGL.dir/src/Audio.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HelloGL.dir/src/Audio.cpp.o -MF CMakeFiles/HelloGL.dir/src/Audio.cpp.o.d -o CMakeFiles/HelloGL.dir/src/Audio.cpp.o -c /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Audio.cpp
+
+CMakeFiles/HelloGL.dir/src/Audio.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/HelloGL.dir/src/Audio.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Audio.cpp > CMakeFiles/HelloGL.dir/src/Audio.cpp.i
+
+CMakeFiles/HelloGL.dir/src/Audio.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/HelloGL.dir/src/Audio.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Audio.cpp -o CMakeFiles/HelloGL.dir/src/Audio.cpp.s
+
 CMakeFiles/HelloGL.dir/src/glad.c.o: CMakeFiles/HelloGL.dir/flags.make
 CMakeFiles/HelloGL.dir/src/glad.c.o: /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/glad.c
 CMakeFiles/HelloGL.dir/src/glad.c.o: CMakeFiles/HelloGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/HelloGL.dir/src/glad.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/HelloGL.dir/src/glad.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/HelloGL.dir/src/glad.c.o -MF CMakeFiles/HelloGL.dir/src/glad.c.o.d -o CMakeFiles/HelloGL.dir/src/glad.c.o -c /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/glad.c
 
 CMakeFiles/HelloGL.dir/src/glad.c.i: cmake_force
@@ -89,7 +103,7 @@ CMakeFiles/HelloGL.dir/src/glad.c.s: cmake_force
 CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o: CMakeFiles/HelloGL.dir/flags.make
 CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o: /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/TextRenderer.cpp
 CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o: CMakeFiles/HelloGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o -MF CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o.d -o CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o -c /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/TextRenderer.cpp
 
 CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.i: cmake_force
@@ -103,7 +117,7 @@ CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.s: cmake_force
 CMakeFiles/HelloGL.dir/src/UI.cpp.o: CMakeFiles/HelloGL.dir/flags.make
 CMakeFiles/HelloGL.dir/src/UI.cpp.o: /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/UI.cpp
 CMakeFiles/HelloGL.dir/src/UI.cpp.o: CMakeFiles/HelloGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/HelloGL.dir/src/UI.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HelloGL.dir/src/UI.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HelloGL.dir/src/UI.cpp.o -MF CMakeFiles/HelloGL.dir/src/UI.cpp.o.d -o CMakeFiles/HelloGL.dir/src/UI.cpp.o -c /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/UI.cpp
 
 CMakeFiles/HelloGL.dir/src/UI.cpp.i: cmake_force
@@ -117,7 +131,7 @@ CMakeFiles/HelloGL.dir/src/UI.cpp.s: cmake_force
 CMakeFiles/HelloGL.dir/src/Player.cpp.o: CMakeFiles/HelloGL.dir/flags.make
 CMakeFiles/HelloGL.dir/src/Player.cpp.o: /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Player.cpp
 CMakeFiles/HelloGL.dir/src/Player.cpp.o: CMakeFiles/HelloGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/HelloGL.dir/src/Player.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/HelloGL.dir/src/Player.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HelloGL.dir/src/Player.cpp.o -MF CMakeFiles/HelloGL.dir/src/Player.cpp.o.d -o CMakeFiles/HelloGL.dir/src/Player.cpp.o -c /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Player.cpp
 
 CMakeFiles/HelloGL.dir/src/Player.cpp.i: cmake_force
@@ -131,7 +145,7 @@ CMakeFiles/HelloGL.dir/src/Player.cpp.s: cmake_force
 CMakeFiles/HelloGL.dir/src/Game.cpp.o: CMakeFiles/HelloGL.dir/flags.make
 CMakeFiles/HelloGL.dir/src/Game.cpp.o: /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Game.cpp
 CMakeFiles/HelloGL.dir/src/Game.cpp.o: CMakeFiles/HelloGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/HelloGL.dir/src/Game.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/HelloGL.dir/src/Game.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HelloGL.dir/src/Game.cpp.o -MF CMakeFiles/HelloGL.dir/src/Game.cpp.o.d -o CMakeFiles/HelloGL.dir/src/Game.cpp.o -c /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Game.cpp
 
 CMakeFiles/HelloGL.dir/src/Game.cpp.i: cmake_force
@@ -145,7 +159,7 @@ CMakeFiles/HelloGL.dir/src/Game.cpp.s: cmake_force
 CMakeFiles/HelloGL.dir/src/main.cpp.o: CMakeFiles/HelloGL.dir/flags.make
 CMakeFiles/HelloGL.dir/src/main.cpp.o: /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/main.cpp
 CMakeFiles/HelloGL.dir/src/main.cpp.o: CMakeFiles/HelloGL.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/HelloGL.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/HelloGL.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/HelloGL.dir/src/main.cpp.o -MF CMakeFiles/HelloGL.dir/src/main.cpp.o.d -o CMakeFiles/HelloGL.dir/src/main.cpp.o -c /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/main.cpp
 
 CMakeFiles/HelloGL.dir/src/main.cpp.i: cmake_force
@@ -158,6 +172,7 @@ CMakeFiles/HelloGL.dir/src/main.cpp.s: cmake_force
 
 # Object files for target HelloGL
 HelloGL_OBJECTS = \
+"CMakeFiles/HelloGL.dir/src/Audio.cpp.o" \
 "CMakeFiles/HelloGL.dir/src/glad.c.o" \
 "CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o" \
 "CMakeFiles/HelloGL.dir/src/UI.cpp.o" \
@@ -168,6 +183,7 @@ HelloGL_OBJECTS = \
 # External object files for target HelloGL
 HelloGL_EXTERNAL_OBJECTS =
 
+HelloGL: CMakeFiles/HelloGL.dir/src/Audio.cpp.o
 HelloGL: CMakeFiles/HelloGL.dir/src/glad.c.o
 HelloGL: CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o
 HelloGL: CMakeFiles/HelloGL.dir/src/UI.cpp.o
@@ -176,11 +192,13 @@ HelloGL: CMakeFiles/HelloGL.dir/src/Game.cpp.o
 HelloGL: CMakeFiles/HelloGL.dir/src/main.cpp.o
 HelloGL: CMakeFiles/HelloGL.dir/build.make
 HelloGL: /Users/mumei/Desktop/computer_graphic_finalwork/opengl/lib/libglfw.3.dylib
+HelloGL: /opt/homebrew/lib/libassimp.6.0.2.dylib
+HelloGL: /Library/Developer/CommandLineTools/SDKs/MacOSX26.sdk/usr/lib/libz.tbd
 HelloGL: CMakeFiles/HelloGL.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable HelloGL"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable HelloGL"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/HelloGL.dir/link.txt --verbose=$(VERBOSE)
 	/opt/homebrew/bin/cmake -E copy_directory /Users/mumei/Desktop/computer_graphic_finalwork/opengl/shaders /Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/shaders
-	/opt/homebrew/bin/cmake -E copy_directory /Users/mumei/Desktop/computer_graphic_finalwork/opengl/asserts /Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/asserts
+	/opt/homebrew/bin/cmake -E copy_directory /Users/mumei/Desktop/computer_graphic_finalwork/opengl/assets /Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/assets
 
 # Rule to build all files generated by this target.
 CMakeFiles/HelloGL.dir/build: HelloGL

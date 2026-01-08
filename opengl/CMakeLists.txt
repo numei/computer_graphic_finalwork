@@ -3,21 +3,27 @@ project(HelloGL VERSION 0.1.0)
 
 # Use C++ 17 standard
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 # Set source files directory
 set(SRC_DIR ${PROJECT_SOURCE_DIR}/src/)
 
+find_package(assimp REQUIRED)
+find_package(OpenAL REQUIRED) # 查找OpenAL库
+include_directories(${OPENAL_INCLUDE_DIRS}) 
 # Add header files
 set(HEADER_DIR ${PROJECT_SOURCE_DIR}/include/)
 set(LIB_DIR ${PROJECT_SOURCE_DIR}/lib/)
 include_directories(${HEADER_DIR} ${LIB_DIR})
 
 # Compile sources
-set(SOURCES ${SRC_DIR}/glad.c ${SRC_DIR}/TextRenderer.cpp ${SRC_DIR}/UI.cpp  ${SRC_DIR}/Player.cpp ${SRC_DIR}/Game.cpp ${SRC_DIR}/main.cpp)
-set(HEADERS ${SRC_DIR}/Shader.h ${SRC_DIR}/TextRenderer.h ${SRC_DIR}/UI.h ${SRC_DIR}/Player.h ${SRC_DIR}/Game.h)
+set(SOURCES ${SRC_DIR}/Audio.cpp ${SRC_DIR}/glad.c ${SRC_DIR}/TextRenderer.cpp ${SRC_DIR}/UI.cpp  ${SRC_DIR}/Player.cpp ${SRC_DIR}/Game.cpp ${SRC_DIR}/main.cpp)
+set(HEADERS ${SRC_DIR}/Audio.h ${SRC_DIR}/Shader.h ${SRC_DIR}/TextRenderer.h ${SRC_DIR}/UI.h ${SRC_DIR}/Player.h ${SRC_DIR}/Game.h)
 # set(SOURCES ${SRC_DIR}glad.c ${SRC_DIR}main.cpp)
 
 add_executable(HelloGL ${SOURCES})
+
 
 # Link libraries (must be after add_executable)
 if(WIN32)
@@ -97,9 +103,33 @@ else()
     target_link_libraries(HelloGL OpenGL::GL)
 endif()
 
+if (APPLE)
+    target_link_libraries(HelloGL "-framework OpenAL")
+elseif(WIN32)
+else()
+    find_package(OpenAL REQUIRED)
+    target_link_libraries(HelloGL OpenAL::OpenAL)
+endif()
+
+if (APPLE)
+    target_link_libraries(HelloGL "-framework OpenAL")
+elseif(WIN32)
+else()
+    find_package(OpenAL REQUIRED)
+    target_link_libraries(HelloGL OpenAL::OpenAL)
+endif()
+
+if (APPLE)
+    target_link_libraries(HelloGL ${ASSIMP_LIBRARIES})
+elseif(WIN32)
+else()
+    find_package(assimp REQUIRED)
+    target_link_libraries(HelloGL ${ASSIMP_LIBRARIES})
+endif()
+
 set(RESOURCE_DIRS
     shaders
-    asserts
+    assets
 )
 
 foreach(dir ${RESOURCE_DIRS})

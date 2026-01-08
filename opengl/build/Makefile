@@ -523,6 +523,30 @@ ContinuousSubmit/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousSubmit.dir/build.make CMakeFiles/ContinuousSubmit.dir/build
 .PHONY : ContinuousSubmit/fast
 
+src/Audio.o: src/Audio.cpp.o
+.PHONY : src/Audio.o
+
+# target to build an object file
+src/Audio.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloGL.dir/build.make CMakeFiles/HelloGL.dir/src/Audio.cpp.o
+.PHONY : src/Audio.cpp.o
+
+src/Audio.i: src/Audio.cpp.i
+.PHONY : src/Audio.i
+
+# target to preprocess a source file
+src/Audio.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloGL.dir/build.make CMakeFiles/HelloGL.dir/src/Audio.cpp.i
+.PHONY : src/Audio.cpp.i
+
+src/Audio.s: src/Audio.cpp.s
+.PHONY : src/Audio.s
+
+# target to generate assembly for a file
+src/Audio.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloGL.dir/build.make CMakeFiles/HelloGL.dir/src/Audio.cpp.s
+.PHONY : src/Audio.cpp.s
+
 src/Game.o: src/Game.cpp.o
 .PHONY : src/Game.o
 
@@ -707,6 +731,9 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... HelloGL"
+	@echo "... src/Audio.o"
+	@echo "... src/Audio.i"
+	@echo "... src/Audio.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"

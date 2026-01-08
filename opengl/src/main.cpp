@@ -18,7 +18,7 @@
 #include "TextRenderer.h"
 #include "UI.h"
 #include "Game.h"
-
+#include "Audio.h"
 const int WINW = 1280, WINH = 920;
 bool keys[1024] = {0};
 bool mousePressed = false;
@@ -66,10 +66,10 @@ std::string GetExecutableDir()
     char path[1024];
     uint32_t size = sizeof(path);
     _NSGetExecutablePath(path, &size);
-    
+
     char resolved[1024];
     realpath(path, resolved);
-    
+
     std::string full(resolved);
     size_t pos = full.find_last_of("/");
     return full.substr(0, pos);
@@ -77,7 +77,8 @@ std::string GetExecutableDir()
     // Linux platform
     char path[PATH_MAX];
     ssize_t count = readlink("/proc/self/exe", path, PATH_MAX);
-    if (count != -1) {
+    if (count != -1)
+    {
         std::string full(path);
         size_t pos = full.find_last_of("/");
         return full.substr(0, pos);
@@ -88,6 +89,7 @@ std::string GetExecutableDir()
 
 int main()
 {
+
     glfwInit();
     if (!glfwInit())
     {
@@ -122,7 +124,10 @@ int main()
     // todo: add object shader, cat shader by Assimp
     // compile shaders
     std::string base = GetExecutableDir();
-
+    Audio audio;
+    audio.Init();
+    unsigned int dropBuffer = audio.LoadWAV(base + "/assets/sound/drop.wav");
+    audio.PlaySound(dropBuffer, true); // loop background sound
     Shader shader3D(
         (base + "/shaders/basic.vs").c_str(),
         (base + "/shaders/basic.fs").c_str());
@@ -161,7 +166,7 @@ int main()
 
     // Create Text renderer and UI
     UI ui;
-    ui.Init((base + "/asserts/Roboto-Regular.ttf").c_str(), 48); // ensure assets/Roboto-Regular.ttf exists relative to build dir
+    ui.Init((base + "/assets/fonts/Roboto-Regular.ttf").c_str(), 48); // ensure assets/Roboto-Regular.ttf exists relative to build dir
     Game game;
     game.Reset();
     auto last = std::chrono::high_resolution_clock::now();
@@ -304,7 +309,7 @@ int main()
 
         glfwSwapBuffers(win);
     }
-
+    audio.Shutdown();
     glfwTerminate();
     return 0;
 }

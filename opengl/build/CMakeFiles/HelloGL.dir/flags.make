@@ -5,7 +5,7 @@
 # compile CXX with /usr/bin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/mumei/Desktop/computer_graphic_finalwork/opengl/include -I/Users/mumei/Desktop/computer_graphic_finalwork/opengl/lib
+C_INCLUDES = -I/Users/mumei/Desktop/computer_graphic_finalwork/opengl/include -I/Users/mumei/Desktop/computer_graphic_finalwork/opengl/lib -isystem /opt/homebrew/include
 
 C_FLAGSarm64 =  -arch arm64
 
@@ -13,9 +13,9 @@ C_FLAGS =  -arch arm64
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/mumei/Desktop/computer_graphic_finalwork/opengl/include -I/Users/mumei/Desktop/computer_graphic_finalwork/opengl/lib
+CXX_INCLUDES = -I/Users/mumei/Desktop/computer_graphic_finalwork/opengl/include -I/Users/mumei/Desktop/computer_graphic_finalwork/opengl/lib -isystem /opt/homebrew/include
 
-CXX_FLAGSarm64 = -std=gnu++17 -arch arm64
+CXX_FLAGSarm64 = -std=c++17 -arch arm64
 
-CXX_FLAGS = -std=gnu++17 -arch arm64
+CXX_FLAGS = -std=c++17 -arch arm64
 

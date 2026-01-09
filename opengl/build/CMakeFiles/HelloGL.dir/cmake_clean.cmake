@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/HelloGL.dir/src/Game.cpp.o.d"
   "CMakeFiles/HelloGL.dir/src/Player.cpp.o"
   "CMakeFiles/HelloGL.dir/src/Player.cpp.o.d"
+  "CMakeFiles/HelloGL.dir/src/StaticModel.cpp.o"
+  "CMakeFiles/HelloGL.dir/src/StaticModel.cpp.o.d"
   "CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o"
   "CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o.d"
   "CMakeFiles/HelloGL.dir/src/UI.cpp.o"

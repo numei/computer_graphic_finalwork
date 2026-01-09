@@ -18,8 +18,8 @@ set(LIB_DIR ${PROJECT_SOURCE_DIR}/lib/)
 include_directories(${HEADER_DIR} ${LIB_DIR})
 
 # Compile sources
-set(SOURCES ${SRC_DIR}/Audio.cpp ${SRC_DIR}/glad.c ${SRC_DIR}/TextRenderer.cpp ${SRC_DIR}/UI.cpp  ${SRC_DIR}/Player.cpp ${SRC_DIR}/Game.cpp ${SRC_DIR}/main.cpp)
-set(HEADERS ${SRC_DIR}/Audio.h ${SRC_DIR}/Shader.h ${SRC_DIR}/TextRenderer.h ${SRC_DIR}/UI.h ${SRC_DIR}/Player.h ${SRC_DIR}/Game.h)
+set(SOURCES ${SRC_DIR}/Audio.cpp ${SRC_DIR}/StaticModel.cpp ${SRC_DIR}/glad.c ${SRC_DIR}/TextRenderer.cpp ${SRC_DIR}/UI.cpp  ${SRC_DIR}/Player.cpp ${SRC_DIR}/Game.cpp ${SRC_DIR}/main.cpp)
+set(HEADERS ${SRC_DIR}/Audio.h ${SRC_DIR}/StaticModel.h ${SRC_DIR}/Shader.h ${SRC_DIR}/TextRenderer.h ${SRC_DIR}/UI.h ${SRC_DIR}/Player.h ${SRC_DIR}/Game.h)
 # set(SOURCES ${SRC_DIR}glad.c ${SRC_DIR}main.cpp)
 
 add_executable(HelloGL ${SOURCES})

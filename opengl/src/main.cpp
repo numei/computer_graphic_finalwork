@@ -27,6 +27,7 @@ static float survivalTime = 0.0f;
 
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.6f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
 bool firstMouse = true;
 float yaw = -90.0f; // yaw is initialized to -90.0 degrees since a yaw of 0.0 results in a direction vector pointing to the right so we initially rotate a bit to the left.
 float pitch = 0.0f;
@@ -35,6 +36,7 @@ float lastY = 600.0f / 2.0;
 float aspect = 45.0f;
 static glm::vec3 smoothCamPos = glm::vec3(0.0f, 5.0f, 8.0f);
 static glm::vec3 camVel = glm::vec3(0.0f);
+glm::vec3 lightPos = glm::vec3(3.0f, 6.0f, 3.0f);
 bool firstPerson = false;
 int lastV = GLFW_RELEASE;
 enum class State
@@ -121,6 +123,8 @@ int main()
         return -1;
     }
     glEnable(GL_DEPTH_TEST);
+    glDisable(GL_BLEND);
+    glEnable(GL_FRAMEBUFFER_SRGB);
     // todo: add object shader, cat shader by Assimp
     // compile shaders
     std::string base = GetExecutableDir();
@@ -129,12 +133,21 @@ int main()
     unsigned int dropBuffer = audio.LoadWAV(base + "/assets/sound/drop.wav");
     audio.PlaySound(dropBuffer, true); // loop background sound
     Shader shader3D(
-        (base + "/shaders/basic.vs").c_str(),
-        (base + "/shaders/basic.fs").c_str());
+        (base + "/shaders/phong.vs").c_str(),
+        (base + "/shaders/phong.fs").c_str());
+    Shader shadowShader((base + "/shaders/shadow_depth.vs").c_str(), (base + "/shaders/shadow_depth.fs").c_str());
 
     Shader shaderText((base + "/shaders/text.vs").c_str(), (base + "/shaders/text.fs").c_str());
-
+    UI ui;
+    ui.Init((base + "/assets/fonts/Roboto-Regular.ttf").c_str(), 48); // ensure assets/Roboto-Regular.ttf exists relative to build dir
+    Game game;
+    game.shadowShader = shadowShader.ID;
+    game.Reset();
+    game.InitShadowMap();
+    game.LoadPlayerModel((base + "/assets/models/walk_cat2.obj").c_str());
+    game.playerModel.modelScale = glm::vec3(0.5f);
     std::vector<float> data;
+
     float cubeVerts[] = {
         -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f,
         0.5f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f, -0.5f, -0.5f, -0.5f,
@@ -163,12 +176,10 @@ int main()
     // We'll attach VAO id to glObjectLabel? Simpler: set as global
     glBindVertexArray(VAO); // keep bound for draw calls later (we'll not unbind)
     // To make it accessible, set to 1 (not ideal), but we'll use VAO 1 implicitly
-
+    // after creating VAO (variable name VAO)
+    game.SetCubeVAO(VAO);
     // Create Text renderer and UI
-    UI ui;
-    ui.Init((base + "/assets/fonts/Roboto-Regular.ttf").c_str(), 48); // ensure assets/Roboto-Regular.ttf exists relative to build dir
-    Game game;
-    game.Reset();
+
     auto last = std::chrono::high_resolution_clock::now();
 
     while (!glfwWindowShouldClose(win))
@@ -245,10 +256,11 @@ int main()
         //  Setup projection / view
         glm::mat4 proj = glm::perspective(glm::radians(aspect), (float)W / H, 0.1f, 100.0f);
         glm::mat4 view;
+        glm::vec3 cameraPos;
         if (firstPerson)
         {
-            glm::vec3 camPos = game.player.pos + glm::vec3(0.0f, 0.6f, 0.0f);
-            view = glm::lookAt(camPos, camPos + cameraFront, cameraUp);
+            cameraPos = game.player.pos + glm::vec3(0.0f, 0.6f, -0.6f);
+            view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         }
         else
         {
@@ -262,6 +274,7 @@ int main()
 
             // look at slightly above player center
             glm::vec3 camTarget = game.player.pos + glm::vec3(0.0f, 0.6f, 0.0f);
+            cameraPos = smoothCamPos;
             view = glm::lookAt(smoothCamPos, camTarget, glm::vec3(0, 1, 0));
         }
         if (state == State::PLAYING)
@@ -271,11 +284,12 @@ int main()
             shader3D.setMat4("uView", view);
             shader3D.setMat4("uProj", proj);
 
-            // set per-vertex color attribute as constant or shader uniform as your Game::Render expects
+            // set per-vertex color attribute as constant or shaader uniform as your Game::Render expects
             glVertexAttrib3f(1, 1.0f, 1.0f, 1.0f);
 
             // now render the game (Game::Render should bind VAO and use shader uniforms)
-            game.Render(shader3D.ID);
+            game.Render(shader3D.ID, cameraPos);
+
             glBindVertexArray(0);
         }
         // draw UI overlays

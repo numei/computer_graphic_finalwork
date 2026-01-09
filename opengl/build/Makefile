@@ -595,6 +595,30 @@ src/Player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloGL.dir/build.make CMakeFiles/HelloGL.dir/src/Player.cpp.s
 .PHONY : src/Player.cpp.s
 
+src/StaticModel.o: src/StaticModel.cpp.o
+.PHONY : src/StaticModel.o
+
+# target to build an object file
+src/StaticModel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloGL.dir/build.make CMakeFiles/HelloGL.dir/src/StaticModel.cpp.o
+.PHONY : src/StaticModel.cpp.o
+
+src/StaticModel.i: src/StaticModel.cpp.i
+.PHONY : src/StaticModel.i
+
+# target to preprocess a source file
+src/StaticModel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloGL.dir/build.make CMakeFiles/HelloGL.dir/src/StaticModel.cpp.i
+.PHONY : src/StaticModel.cpp.i
+
+src/StaticModel.s: src/StaticModel.cpp.s
+.PHONY : src/StaticModel.s
+
+# target to generate assembly for a file
+src/StaticModel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/HelloGL.dir/build.make CMakeFiles/HelloGL.dir/src/StaticModel.cpp.s
+.PHONY : src/StaticModel.cpp.s
+
 src/TextRenderer.o: src/TextRenderer.cpp.o
 .PHONY : src/TextRenderer.o
 
@@ -740,6 +764,9 @@ help:
 	@echo "... src/Player.o"
 	@echo "... src/Player.i"
 	@echo "... src/Player.s"
+	@echo "... src/StaticModel.o"
+	@echo "... src/StaticModel.i"
+	@echo "... src/StaticModel.s"
 	@echo "... src/TextRenderer.o"
 	@echo "... src/TextRenderer.i"
 	@echo "... src/TextRenderer.s"

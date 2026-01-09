@@ -1117,4 +1117,34 @@ CMakeFiles/HelloGL.dir/src/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__random/uniform_random_bit_generator.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__random/weibull_distribution.h \
   /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Player.h \
+  /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/StaticModel.h \
+  /opt/homebrew/include/assimp/scene.h \
+  /opt/homebrew/include/assimp/types.h \
+  /opt/homebrew/include/assimp/defs.h \
+  /opt/homebrew/include/assimp/config.h \
+  /opt/homebrew/include/assimp/vector2.h \
+  /opt/homebrew/include/assimp/vector3.h \
+  /opt/homebrew/include/assimp/color4.h \
+  /opt/homebrew/include/assimp/matrix3x3.h \
+  /opt/homebrew/include/assimp/matrix4x4.h \
+  /opt/homebrew/include/assimp/quaternion.h \
+  /opt/homebrew/include/assimp/vector2.inl \
+  /opt/homebrew/include/assimp/vector3.inl \
+  /opt/homebrew/include/assimp/color4.inl \
+  /opt/homebrew/include/assimp/matrix3x3.inl \
+  /opt/homebrew/include/assimp/matrix4x4.inl \
+  /opt/homebrew/include/assimp/MathFunctions.h \
+  /opt/homebrew/include/assimp/quaternion.inl \
+  /opt/homebrew/include/assimp/texture.h \
+  /opt/homebrew/include/assimp/./Compiler/pushpack1.h \
+  /opt/homebrew/include/assimp/./Compiler/poppack1.h \
+  /opt/homebrew/include/assimp/mesh.h \
+  /opt/homebrew/include/assimp/aabb.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/unordered_set \
+  /opt/homebrew/include/assimp/light.h \
+  /opt/homebrew/include/assimp/camera.h \
+  /opt/homebrew/include/assimp/material.h \
+  /opt/homebrew/include/assimp/material.inl \
+  /opt/homebrew/include/assimp/anim.h \
+  /opt/homebrew/include/assimp/metadata.h \
   /Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Audio.h

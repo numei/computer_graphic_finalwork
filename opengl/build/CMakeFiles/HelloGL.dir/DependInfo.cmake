@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Audio.cpp" "CMakeFiles/HelloGL.dir/src/Audio.cpp.o" "gcc" "CMakeFiles/HelloGL.dir/src/Audio.cpp.o.d"
   "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Game.cpp" "CMakeFiles/HelloGL.dir/src/Game.cpp.o" "gcc" "CMakeFiles/HelloGL.dir/src/Game.cpp.o.d"
   "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/Player.cpp" "CMakeFiles/HelloGL.dir/src/Player.cpp.o" "gcc" "CMakeFiles/HelloGL.dir/src/Player.cpp.o.d"
+  "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/StaticModel.cpp" "CMakeFiles/HelloGL.dir/src/StaticModel.cpp.o" "gcc" "CMakeFiles/HelloGL.dir/src/StaticModel.cpp.o.d"
   "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/TextRenderer.cpp" "CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o" "gcc" "CMakeFiles/HelloGL.dir/src/TextRenderer.cpp.o.d"
   "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/UI.cpp" "CMakeFiles/HelloGL.dir/src/UI.cpp.o" "gcc" "CMakeFiles/HelloGL.dir/src/UI.cpp.o.d"
   "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/src/main.cpp" "CMakeFiles/HelloGL.dir/src/main.cpp.o" "gcc" "CMakeFiles/HelloGL.dir/src/main.cpp.o.d"

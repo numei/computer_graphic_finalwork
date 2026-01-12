@@ -4,6 +4,12 @@
 #define DR_WAV_IMPLEMENTATION
 #include "dr_wav.h" // put dr_wav.h into src/
 #include <iostream>
+#include <vector>
+#include <cstdint>
+// Undefine Windows PlaySound macro if it exists (from windows.h)
+#ifdef PlaySound
+#undef PlaySound
+#endif
 
 static ALCdevice *device = nullptr;
 static ALCcontext *context = nullptr;

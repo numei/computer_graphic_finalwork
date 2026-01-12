@@ -1,6 +1,12 @@
 #pragma once
 #include <string>
 
+// Undefine Windows PlaySound macro if it exists (from windows.h)
+// This must be done before declaring the PlaySound function
+#ifdef PlaySound
+#undef PlaySound
+#endif
+
 class Audio
 {
 public:

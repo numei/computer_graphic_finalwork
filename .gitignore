@@ -30,7 +30,6 @@ Makefile
 
 # Compiled files
 *.o
-*.obj
 *.exe
 *.dll
 *.so

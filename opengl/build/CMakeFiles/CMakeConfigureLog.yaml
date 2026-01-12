@@ -20,6 +20,8 @@ events:
     names:
       - "uname"
     candidate_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -33,9 +35,12 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/uname"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/uname"
       - "/opt/homebrew/bin/uname"
       - "/opt/homebrew/sbin/uname"
       - "/usr/local/bin/uname"
@@ -43,6 +48,8 @@ events:
     found: "/usr/bin/uname"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -56,8 +63,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "message-v1"
     backtrace:
@@ -86,6 +94,8 @@ events:
       - "make"
       - "smake"
     candidate_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -99,11 +109,17 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+    searched_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/gmake"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/gmake"
     found: "/opt/homebrew/bin/gmake"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -117,8 +133,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -145,6 +162,8 @@ events:
       - "icx"
       - "clang"
     candidate_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -158,9 +177,12 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/cc"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/cc"
       - "/opt/homebrew/bin/cc"
       - "/opt/homebrew/sbin/cc"
       - "/usr/local/bin/cc"
@@ -168,6 +190,8 @@ events:
     found: "/usr/bin/cc"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -181,8 +205,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -210,6 +235,8 @@ events:
     found: "/opt/homebrew/share/cmake/Modules/CMakeCCompilerId.c.in"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -223,8 +250,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "message-v1"
     backtrace:
@@ -309,6 +337,8 @@ events:
       - "ar"
     candidate_directories:
       - "/usr/bin/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -321,11 +351,14 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     found: "/usr/bin/ar"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -339,8 +372,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -362,6 +396,8 @@ events:
       - "ranlib"
     candidate_directories:
       - "/usr/bin/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -374,11 +410,14 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     found: "/usr/bin/ranlib"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -392,8 +431,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -415,6 +455,8 @@ events:
       - "strip"
     candidate_directories:
       - "/usr/bin/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -427,11 +469,14 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     found: "/usr/bin/strip"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -445,8 +490,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -468,6 +514,8 @@ events:
       - "ld"
     candidate_directories:
       - "/usr/bin/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -480,11 +528,14 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     found: "/usr/bin/ld"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -498,8 +549,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -521,6 +573,8 @@ events:
       - "nm"
     candidate_directories:
       - "/usr/bin/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -533,11 +587,14 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     found: "/usr/bin/nm"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -551,8 +608,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -574,6 +632,8 @@ events:
       - "objdump"
     candidate_directories:
       - "/usr/bin/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -586,11 +646,14 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     found: "/usr/bin/objdump"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -604,8 +667,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -627,6 +691,8 @@ events:
       - "objcopy"
     candidate_directories:
       - "/usr/bin/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -639,10 +705,13 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "/usr/bin/objcopy"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/objcopy"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/objcopy"
       - "/opt/homebrew/bin/objcopy"
       - "/opt/homebrew/sbin/objcopy"
       - "/usr/local/bin/objcopy"
@@ -655,11 +724,14 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/objcopy"
       - "/opt/X11/bin/objcopy"
       - "/Applications/VMware Fusion.app/Contents/Public/objcopy"
+      - "/usr/local/share/dotnet/objcopy"
+      - "/Users/mumei/.dotnet/tools/objcopy"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/objcopy"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/objcopy"
     found: false
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -673,8 +745,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -696,6 +769,8 @@ events:
       - "readelf"
     candidate_directories:
       - "/usr/bin/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -708,10 +783,13 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "/usr/bin/readelf"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/readelf"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/readelf"
       - "/opt/homebrew/bin/readelf"
       - "/opt/homebrew/sbin/readelf"
       - "/usr/local/bin/readelf"
@@ -724,11 +802,14 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/readelf"
       - "/opt/X11/bin/readelf"
       - "/Applications/VMware Fusion.app/Contents/Public/readelf"
+      - "/usr/local/share/dotnet/readelf"
+      - "/Users/mumei/.dotnet/tools/readelf"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/readelf"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/readelf"
     found: false
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -742,8 +823,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -765,6 +847,8 @@ events:
       - "dlltool"
     candidate_directories:
       - "/usr/bin/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -777,10 +861,13 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "/usr/bin/dlltool"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/dlltool"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/dlltool"
       - "/opt/homebrew/bin/dlltool"
       - "/opt/homebrew/sbin/dlltool"
       - "/usr/local/bin/dlltool"
@@ -793,11 +880,14 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/dlltool"
       - "/opt/X11/bin/dlltool"
       - "/Applications/VMware Fusion.app/Contents/Public/dlltool"
+      - "/usr/local/share/dotnet/dlltool"
+      - "/Users/mumei/.dotnet/tools/dlltool"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/dlltool"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/dlltool"
     found: false
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -811,8 +901,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -834,6 +925,8 @@ events:
       - "addr2line"
     candidate_directories:
       - "/usr/bin/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -846,10 +939,13 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "/usr/bin/addr2line"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/addr2line"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/addr2line"
       - "/opt/homebrew/bin/addr2line"
       - "/opt/homebrew/sbin/addr2line"
       - "/usr/local/bin/addr2line"
@@ -862,11 +958,14 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/addr2line"
       - "/opt/X11/bin/addr2line"
       - "/Applications/VMware Fusion.app/Contents/Public/addr2line"
+      - "/usr/local/share/dotnet/addr2line"
+      - "/Users/mumei/.dotnet/tools/addr2line"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/addr2line"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/addr2line"
     found: false
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -880,8 +979,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -903,6 +1003,8 @@ events:
       - "tapi"
     candidate_directories:
       - "/usr/bin/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -915,10 +1017,13 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
       - "/usr/bin/tapi"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/tapi"
       - "/opt/homebrew/bin/tapi"
       - "/opt/homebrew/sbin/tapi"
       - "/usr/local/bin/tapi"
@@ -931,11 +1036,14 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/tapi"
       - "/opt/X11/bin/tapi"
       - "/Applications/VMware Fusion.app/Contents/Public/tapi"
+      - "/usr/local/share/dotnet/tapi"
+      - "/Users/mumei/.dotnet/tools/tapi"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/tapi"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi"
     found: false
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -949,8 +1057,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -981,6 +1090,8 @@ events:
     found: "/usr/bin/c++"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -994,8 +1105,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "find-v1"
     backtrace:
@@ -1023,6 +1135,8 @@ events:
     found: "/opt/homebrew/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -1036,8 +1150,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
   -
     kind: "message-v1"
     backtrace:
@@ -1121,6 +1236,8 @@ events:
     names:
       - "install_name_tool"
     candidate_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -1134,9 +1251,12 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
     searched_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/install_name_tool"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/install_name_tool"
       - "/opt/homebrew/bin/install_name_tool"
       - "/opt/homebrew/sbin/install_name_tool"
       - "/usr/local/bin/install_name_tool"
@@ -1144,6 +1264,8 @@ events:
     found: "/usr/bin/install_name_tool"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -1157,8 +1279,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
       CMAKE_INSTALL_PREFIX: "/usr/local"
   -
     kind: "try_compile-v1"
@@ -1169,8 +1292,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-0TGUrc"
-      binary: "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-0TGUrc"
+      source: "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-j5IZAn"
+      binary: "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-j5IZAn"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -1182,19 +1305,19 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-0TGUrc'
+        Change Dir: '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-j5IZAn'
         
-        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_6e677/fast
-        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_6e677.dir/build.make CMakeFiles/cmTC_6e677.dir/build
-        gmake[1]: Entering directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-0TGUrc'
-        Building C object CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o
-        /usr/bin/cc   -arch arm64   -v -Wl,-v -MD -MT CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_90115/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_90115.dir/build.make CMakeFiles/cmTC_90115.dir/build
+        gmake[1]: Entering directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-j5IZAn'
+        Building C object CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -arch arm64   -v -Wl,-v -MD -MT CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
         Apple clang version 17.0.0 (clang-1700.3.19.1)
         Target: arm64-apple-darwin25.0.0
         Thread model: posix
         InstalledDir: /Library/Developer/CommandLineTools/usr/bin
         clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
-         "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx26.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-0TGUrc -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-0TGUrc -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
+         "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx26.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-j5IZAn -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-j5IZAn -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c
         clang -cc1 version 17.0.0 (clang-1700.3.19.1) default target arm64-apple-darwin25.0.0
         ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"
         ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"
@@ -1207,13 +1330,13 @@ events:
          /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
          /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)
         End of search list.
-        Linking C executable cmTC_6e677
-        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6e677.dir/link.txt --verbose=1
+        Linking C executable cmTC_90115
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_90115.dir/link.txt --verbose=1
         Apple clang version 17.0.0 (clang-1700.3.19.1)
         Target: arm64-apple-darwin25.0.0
         Thread model: posix
         InstalledDir: /Library/Developer/CommandLineTools/usr/bin
-         "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 26.0.0 26.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_6e677 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
+         "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 26.0.0 26.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_90115 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
         @(#)PROGRAM:ld PROJECT:ld-1221.4
         BUILD 16:29:08 Aug 11 2025
         configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em armv8m.main armv8.1m.main
@@ -1226,8 +1349,8 @@ events:
         	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift
         Framework search paths:
         	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks
-        /usr/bin/cc  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o -o cmTC_6e677
-        gmake[1]: Leaving directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-0TGUrc'
+        /usr/bin/cc  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o -o cmTC_90115
+        gmake[1]: Leaving directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-j5IZAn'
         
       exitCode: 0
   -
@@ -1271,19 +1394,19 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-0TGUrc']
+        ignore line: [Change Dir: '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-j5IZAn']
         ignore line: []
-        ignore line: [Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_6e677/fast]
-        ignore line: [/opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_6e677.dir/build.make CMakeFiles/cmTC_6e677.dir/build]
-        ignore line: [gmake[1]: Entering directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-0TGUrc']
-        ignore line: [Building C object CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/usr/bin/cc   -arch arm64   -v -Wl -v -MD -MT CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_90115/fast]
+        ignore line: [/opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_90115.dir/build.make CMakeFiles/cmTC_90115.dir/build]
+        ignore line: [gmake[1]: Entering directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-j5IZAn']
+        ignore line: [Building C object CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -arch arm64   -v -Wl -v -MD -MT CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o -c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [Apple clang version 17.0.0 (clang-1700.3.19.1)]
         ignore line: [Target: arm64-apple-darwin25.0.0]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
         ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
-        ignore line: [ "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx26.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-0TGUrc -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-0TGUrc -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [ "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx26.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-j5IZAn -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-j5IZAn -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fskip-odr-check-in-gmf -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o -x c /opt/homebrew/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [clang -cc1 version 17.0.0 (clang-1700.3.19.1) default target arm64-apple-darwin25.0.0]
         ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"]
         ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"]
@@ -1296,13 +1419,13 @@ events:
         ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)]
         ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)]
         ignore line: [End of search list.]
-        ignore line: [Linking C executable cmTC_6e677]
-        ignore line: [/opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6e677.dir/link.txt --verbose=1]
+        ignore line: [Linking C executable cmTC_90115]
+        ignore line: [/opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_90115.dir/link.txt --verbose=1]
         ignore line: [Apple clang version 17.0.0 (clang-1700.3.19.1)]
         ignore line: [Target: arm64-apple-darwin25.0.0]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
-        link line: [ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 26.0.0 26.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_6e677 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+        link line: [ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 26.0.0 26.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_90115 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
           arg [/Library/Developer/CommandLineTools/usr/bin/ld] ==> ignore
           arg [-demangle] ==> ignore
           arg [-lto_library] ==> ignore, skip following value
@@ -1319,12 +1442,12 @@ events:
           arg [-mllvm] ==> ignore
           arg [-enable-linkonceodr-outlining] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_6e677] ==> ignore
+          arg [cmTC_90115] ==> ignore
           arg [-L/usr/local/lib] ==> dir [/usr/local/lib]
           arg [-search_paths_first] ==> ignore
           arg [-headerpad_max_install_names] ==> ignore
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_6e677.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_90115.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lSystem] ==> lib [System]
           arg [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a] ==> lib [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
         linker tool for 'C': /Library/Developer/CommandLineTools/usr/bin/ld
@@ -1367,8 +1490,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-32vaIh"
-      binary: "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-32vaIh"
+      source: "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-XJzwK9"
+      binary: "/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-XJzwK9"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -1381,20 +1504,20 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-32vaIh'
+        Change Dir: '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-XJzwK9'
         
-        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_583d6/fast
-        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_583d6.dir/build.make CMakeFiles/cmTC_583d6.dir/build
-        gmake[1]: Entering directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-32vaIh'
-        Building CXX object CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o
-        /usr/bin/c++   -arch arm64   -v -Wl,-v -MD -MT CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_be734/fast
+        /opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_be734.dir/build.make CMakeFiles/cmTC_be734.dir/build
+        gmake[1]: Entering directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-XJzwK9'
+        Building CXX object CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -arch arm64   -v -Wl,-v -MD -MT CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         Apple clang version 17.0.0 (clang-1700.3.19.1)
         Target: arm64-apple-darwin25.0.0
         Thread model: posix
         InstalledDir: /Library/Developer/CommandLineTools/usr/bin
         clang++: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
         ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"
-         "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx26.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-32vaIh -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-32vaIh -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+         "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx26.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-XJzwK9 -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-XJzwK9 -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         clang -cc1 version 17.0.0 (clang-1700.3.19.1) default target arm64-apple-darwin25.0.0
         ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"
         ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"
@@ -1408,13 +1531,13 @@ events:
          /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
          /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)
         End of search list.
-        Linking CXX executable cmTC_583d6
-        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_583d6.dir/link.txt --verbose=1
+        Linking CXX executable cmTC_be734
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_be734.dir/link.txt --verbose=1
         Apple clang version 17.0.0 (clang-1700.3.19.1)
         Target: arm64-apple-darwin25.0.0
         Thread model: posix
         InstalledDir: /Library/Developer/CommandLineTools/usr/bin
-         "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 26.0.0 26.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_583d6 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
+         "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 26.0.0 26.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_be734 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
         @(#)PROGRAM:ld PROJECT:ld-1221.4
         BUILD 16:29:08 Aug 11 2025
         configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em armv8m.main armv8.1m.main
@@ -1427,8 +1550,8 @@ events:
         	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/swift
         Framework search paths:
         	/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks
-        /usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_583d6
-        gmake[1]: Leaving directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-32vaIh'
+        /usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_be734
+        gmake[1]: Leaving directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-XJzwK9'
         
       exitCode: 0
   -
@@ -1474,20 +1597,20 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-32vaIh']
+        ignore line: [Change Dir: '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-XJzwK9']
         ignore line: []
-        ignore line: [Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_583d6/fast]
-        ignore line: [/opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_583d6.dir/build.make CMakeFiles/cmTC_583d6.dir/build]
-        ignore line: [gmake[1]: Entering directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-32vaIh']
-        ignore line: [Building CXX object CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/usr/bin/c++   -arch arm64   -v -Wl -v -MD -MT CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /opt/homebrew/bin/gmake -f Makefile cmTC_be734/fast]
+        ignore line: [/opt/homebrew/bin/gmake  -f CMakeFiles/cmTC_be734.dir/build.make CMakeFiles/cmTC_be734.dir/build]
+        ignore line: [gmake[1]: Entering directory '/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-XJzwK9']
+        ignore line: [Building CXX object CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -arch arm64   -v -Wl -v -MD -MT CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Apple clang version 17.0.0 (clang-1700.3.19.1)]
         ignore line: [Target: arm64-apple-darwin25.0.0]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
         ignore line: [clang++: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
         ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"]
-        ignore line: [ "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx26.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-32vaIh -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-32vaIh -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [ "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple arm64-apple-macosx26.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-XJzwK9 -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/mumei/Desktop/computer_graphic_finalwork/opengl/build/CMakeFiles/CMakeScratch/TryCompile-XJzwK9 -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/17/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [clang -cc1 version 17.0.0 (clang-1700.3.19.1) default target arm64-apple-darwin25.0.0]
         ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/local/include"]
         ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/Library/Frameworks"]
@@ -1501,13 +1624,13 @@ events:
         ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)]
         ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)]
         ignore line: [End of search list.]
-        ignore line: [Linking CXX executable cmTC_583d6]
-        ignore line: [/opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_583d6.dir/link.txt --verbose=1]
+        ignore line: [Linking CXX executable cmTC_be734]
+        ignore line: [/opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_be734.dir/link.txt --verbose=1]
         ignore line: [Apple clang version 17.0.0 (clang-1700.3.19.1)]
         ignore line: [Target: arm64-apple-darwin25.0.0]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
-        link line: [ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 26.0.0 26.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_583d6 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+        link line: [ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 26.0.0 26.0 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_be734 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
           arg [/Library/Developer/CommandLineTools/usr/bin/ld] ==> ignore
           arg [-demangle] ==> ignore
           arg [-lto_library] ==> ignore, skip following value
@@ -1524,12 +1647,12 @@ events:
           arg [-mllvm] ==> ignore
           arg [-enable-linkonceodr-outlining] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_583d6] ==> ignore
+          arg [cmTC_be734] ==> ignore
           arg [-L/usr/local/lib] ==> dir [/usr/local/lib]
           arg [-search_paths_first] ==> ignore
           arg [-headerpad_max_install_names] ==> ignore
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_583d6.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_be734.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lc++] ==> lib [c++]
           arg [-lSystem] ==> lib [System]
           arg [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a] ==> lib [/Library/Developer/CommandLineTools/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
@@ -1608,6 +1731,22 @@ events:
         mode: "config"
         reason: "no_exist"
       -
+        path: "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/assimpConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/assimp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/assimpConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/assimp-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
         path: "/opt/homebrew/assimpConfig.cmake"
         mode: "config"
         reason: "no_exist"
@@ -1621,6 +1760,8 @@ events:
       version: "6.0.2"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -1634,8 +1775,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr"
@@ -1679,6 +1821,18 @@ events:
     names:
       - "al.h"
     candidate_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/include/AL/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/include/OpenAL/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/include/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/AL/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/OpenAL/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/include/AL/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/include/OpenAL/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/include/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/AL/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/OpenAL/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/include/AL/"
       - "/opt/homebrew/bin/include/OpenAL/"
       - "/opt/homebrew/bin/include/"
@@ -1757,18 +1911,24 @@ events:
       - "/Applications/VMware Fusion.app/Contents/Public/AL/"
       - "/Applications/VMware Fusion.app/Contents/Public/OpenAL/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/include/AL/"
+      - "/usr/local/share/dotnet/include/OpenAL/"
+      - "/usr/local/share/dotnet/include/"
+      - "/usr/local/share/dotnet/AL/"
+      - "/usr/local/share/dotnet/OpenAL/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/include/AL/"
+      - "/Users/mumei/.dotnet/tools/include/OpenAL/"
+      - "/Users/mumei/.dotnet/tools/include/"
+      - "/Users/mumei/.dotnet/tools/AL/"
+      - "/Users/mumei/.dotnet/tools/OpenAL/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/include/AL/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/include/OpenAL/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/include/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/AL/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/OpenAL/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/include/AL/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/include/OpenAL/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/include/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/AL/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/OpenAL/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/include/AL/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/include/OpenAL/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/include/"
@@ -1946,6 +2106,8 @@ events:
     found: "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenAL.framework/Headers/"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -1959,8 +2121,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr"
@@ -2009,6 +2172,8 @@ events:
       - "openal"
       - "OpenAL32"
     candidate_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -2018,8 +2183,7 @@ events:
       - "/usr/sbin/"
       - "/sbin/"
       - "/opt/X11/bin/"
-      - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/usr/local/share/dotnet/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/"
@@ -2044,6 +2208,8 @@ events:
     found: "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenAL.framework"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -2057,8 +2223,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr"
@@ -2109,6 +2276,8 @@ events:
       - "cuda-memcheck"
       - "compute-sanitizer"
     candidate_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -2122,8 +2291,9 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/bin/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/sbin/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/"
@@ -2156,6 +2326,8 @@ events:
       - "/Users/mumei/Applications/"
       - "/Applications/"
     searched_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/purify"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/purify"
       - "/opt/homebrew/bin/purify"
       - "/opt/homebrew/sbin/purify"
       - "/usr/local/bin/purify"
@@ -2169,8 +2341,9 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/purify"
       - "/opt/X11/bin/purify"
       - "/Applications/VMware Fusion.app/Contents/Public/purify"
+      - "/usr/local/share/dotnet/purify"
+      - "/Users/mumei/.dotnet/tools/purify"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/purify"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/purify"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/bin/purify"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/sbin/purify"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/purify"
@@ -2202,6 +2375,8 @@ events:
       - "/opt/local/purify"
       - "/Users/mumei/Applications/purify"
       - "/Applications/purify"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/valgrind"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/valgrind"
       - "/opt/homebrew/bin/valgrind"
       - "/opt/homebrew/sbin/valgrind"
       - "/usr/local/bin/valgrind"
@@ -2215,8 +2390,9 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/valgrind"
       - "/opt/X11/bin/valgrind"
       - "/Applications/VMware Fusion.app/Contents/Public/valgrind"
+      - "/usr/local/share/dotnet/valgrind"
+      - "/Users/mumei/.dotnet/tools/valgrind"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/valgrind"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/valgrind"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/bin/valgrind"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/sbin/valgrind"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/valgrind"
@@ -2248,6 +2424,8 @@ events:
       - "/opt/local/valgrind"
       - "/Users/mumei/Applications/valgrind"
       - "/Applications/valgrind"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/boundscheck"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/boundscheck"
       - "/opt/homebrew/bin/boundscheck"
       - "/opt/homebrew/sbin/boundscheck"
       - "/usr/local/bin/boundscheck"
@@ -2261,8 +2439,9 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/boundscheck"
       - "/opt/X11/bin/boundscheck"
       - "/Applications/VMware Fusion.app/Contents/Public/boundscheck"
+      - "/usr/local/share/dotnet/boundscheck"
+      - "/Users/mumei/.dotnet/tools/boundscheck"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/boundscheck"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/boundscheck"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/bin/boundscheck"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/sbin/boundscheck"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/boundscheck"
@@ -2294,6 +2473,8 @@ events:
       - "/opt/local/boundscheck"
       - "/Users/mumei/Applications/boundscheck"
       - "/Applications/boundscheck"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/drmemory"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/drmemory"
       - "/opt/homebrew/bin/drmemory"
       - "/opt/homebrew/sbin/drmemory"
       - "/usr/local/bin/drmemory"
@@ -2307,8 +2488,9 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/drmemory"
       - "/opt/X11/bin/drmemory"
       - "/Applications/VMware Fusion.app/Contents/Public/drmemory"
+      - "/usr/local/share/dotnet/drmemory"
+      - "/Users/mumei/.dotnet/tools/drmemory"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/drmemory"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/drmemory"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/bin/drmemory"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/sbin/drmemory"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/drmemory"
@@ -2340,6 +2522,8 @@ events:
       - "/opt/local/drmemory"
       - "/Users/mumei/Applications/drmemory"
       - "/Applications/drmemory"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/cuda-memcheck"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/cuda-memcheck"
       - "/opt/homebrew/bin/cuda-memcheck"
       - "/opt/homebrew/sbin/cuda-memcheck"
       - "/usr/local/bin/cuda-memcheck"
@@ -2353,8 +2537,9 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/cuda-memcheck"
       - "/opt/X11/bin/cuda-memcheck"
       - "/Applications/VMware Fusion.app/Contents/Public/cuda-memcheck"
+      - "/usr/local/share/dotnet/cuda-memcheck"
+      - "/Users/mumei/.dotnet/tools/cuda-memcheck"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/cuda-memcheck"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/cuda-memcheck"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/bin/cuda-memcheck"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/sbin/cuda-memcheck"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/cuda-memcheck"
@@ -2386,6 +2571,8 @@ events:
       - "/opt/local/cuda-memcheck"
       - "/Users/mumei/Applications/cuda-memcheck"
       - "/Applications/cuda-memcheck"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/compute-sanitizer"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/compute-sanitizer"
       - "/opt/homebrew/bin/compute-sanitizer"
       - "/opt/homebrew/sbin/compute-sanitizer"
       - "/usr/local/bin/compute-sanitizer"
@@ -2399,8 +2586,9 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/compute-sanitizer"
       - "/opt/X11/bin/compute-sanitizer"
       - "/Applications/VMware Fusion.app/Contents/Public/compute-sanitizer"
+      - "/usr/local/share/dotnet/compute-sanitizer"
+      - "/Users/mumei/.dotnet/tools/compute-sanitizer"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/compute-sanitizer"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/compute-sanitizer"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/bin/compute-sanitizer"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/sbin/compute-sanitizer"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/compute-sanitizer"
@@ -2435,6 +2623,8 @@ events:
     found: false
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -2448,8 +2638,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr"
@@ -2486,6 +2677,8 @@ events:
     names:
       - "gcov"
     candidate_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
       - "/opt/homebrew/bin/"
       - "/opt/homebrew/sbin/"
       - "/usr/local/bin/"
@@ -2499,8 +2692,9 @@ events:
       - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/"
       - "/opt/X11/bin/"
       - "/Applications/VMware Fusion.app/Contents/Public/"
+      - "/usr/local/share/dotnet/"
+      - "/Users/mumei/.dotnet/tools/"
       - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts/"
-      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/bin/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/sbin/"
       - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/"
@@ -2533,6 +2727,8 @@ events:
       - "/Users/mumei/Applications/"
       - "/Applications/"
     searched_directories:
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/gcov"
+      - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/gcov"
       - "/opt/homebrew/bin/gcov"
       - "/opt/homebrew/sbin/gcov"
       - "/usr/local/bin/gcov"
@@ -2540,6 +2736,8 @@ events:
     found: "/usr/bin/gcov"
     search_context:
       ENV{PATH}:
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
+        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
         - "/opt/homebrew/bin"
         - "/opt/homebrew/sbin"
         - "/usr/local/bin"
@@ -2553,8 +2751,9 @@ events:
         - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
         - "/opt/X11/bin"
         - "/Applications/VMware Fusion.app/Contents/Public"
+        - "/usr/local/share/dotnet"
+        - "~/.dotnet/tools"
         - "/Users/mumei/.vscode/extensions/ms-python.debugpy-2025.16.0-darwin-arm64/bundled/scripts/noConfigScripts"
-        - "/Users/mumei/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr"

@@ -149,10 +149,9 @@ int main()
     game.shadowShader = shadowShader.ID;
     game.Reset();
     game.InitShadowMap();
-    // Try walk_cat.glb first (exists), fallback to walk_cat2.obj if needed
-    std::string modelPath = base + "/assets/models/walk_cat.glb";
+    // Load walk_cat2.obj model file
+    std::string modelPath = base + "/assets/models/walk_cat2.obj";
     game.LoadPlayerModel(modelPath.c_str());
-    game.playerModel.modelScale = glm::vec3(0.5f);
     game.playerModel.modelScale = glm::vec3(0.5f);
     std::vector<float> data;
 

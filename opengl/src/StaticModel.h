@@ -55,7 +55,8 @@ private:
     void Cleanup();
 
     // helper to load texture file, returns 0 on failure
-    static GLuint LoadTextureFromFile(const std::string &filename, bool &outHasAlpha);
+    // silent: if true, don't print error messages (useful for trying multiple paths)
+    static GLuint LoadTextureFromFile(const std::string &filename, bool &outHasAlpha, bool silent = false);
     bool bboxInitialized = false;
     void ComputeBBoxRecursive(aiNode *node,
                               const aiScene *scene,

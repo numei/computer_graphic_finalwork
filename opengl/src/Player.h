@@ -7,7 +7,7 @@ class Player
 public:
     glm::vec3 pos;
     glm::vec3 color;
-
+    glm::mat4 modelMatrix;
     float moveSpeed = 5.0f;
     float groundY = 0.5f; // Default player height
 

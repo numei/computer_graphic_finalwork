@@ -39,7 +39,7 @@ GLuint StaticModel::LoadTextureFromFile(const std::string &filename, bool &outHa
     stbi_uc *data = stbi_load(filename.c_str(), &w, &h, &n, 4); // force 4 channels (RGBA)
     if (!data)
     {
-        std::cerr << "stb_image failed to load: " << filename << "\n";
+        std::cerr << "stb_image failed to load: " << filename << " reason: " << stbi_failure_reason() << "\n";
         return 0;
     }
     // if original channels < 4, n may be < 4; but we forced load to 4 -> check alpha content
@@ -171,6 +171,7 @@ bool StaticModel::LoadFromFile(const std::string &path)
             {
                 aiString texPath;
                 mat->GetTexture(aiTextureType_DIFFUSE, 0, &texPath);
+                std::cout << "StaticModel: found diffuse texture path: " << texPath.C_Str() << "\n";
                 std::string texFile = texPath.C_Str();
                 std::string full = texFile;
                 // if relative path -> make absolute relative to model directory
@@ -360,4 +361,14 @@ void StaticModel::ComputeBBoxRecursive(
     //           << bboxMax.x << ", "
     //           << bboxMax.y << ", "
     //           << bboxMax.z << std::endl;
+}
+
+void StaticModel::DrawDepth() const
+{
+    for (const auto &m : meshes)
+    {
+        glBindVertexArray(m.vao);
+        glDrawElements(GL_TRIANGLES, m.indexCount, GL_UNSIGNED_INT, 0);
+    }
+    glBindVertexArray(0);
 }

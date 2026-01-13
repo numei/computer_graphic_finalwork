@@ -42,11 +42,14 @@ public:
     // Draw with currently bound shader. Caller must set uModel, uNormalMat, and shader must
     // support uHasDiffuse, uHasAlpha, uUseAlphaTest, uAlphaCutoff, uMatDiffuse, and sampler2D uDiffuseMap.
     void Draw(GLuint shaderProgram) const;
-
+    void DrawDepth() const;
+    GLuint getDiffuseTexID() const;
     // convenience scale
     glm::vec3 modelScale = glm::vec3(1.0f);
+    glm::mat4 modelMatrix = glm::mat4(1.0f);
     glm::vec3 bboxMin = glm::vec3(0.0f);
     glm::vec3 bboxMax = glm::vec3(0.0f);
+    bool bboxInitialized = false;
 
 private:
     std::vector<MeshRenderData> meshes;
@@ -56,7 +59,6 @@ private:
 
     // helper to load texture file, returns 0 on failure
     static GLuint LoadTextureFromFile(const std::string &filename, bool &outHasAlpha);
-    bool bboxInitialized = false;
     void ComputeBBoxRecursive(aiNode *node,
                               const aiScene *scene,
                               const glm::mat4 &parentTransform);

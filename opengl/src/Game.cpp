@@ -10,6 +10,124 @@
 // File-scope: store the player's fixed Y height so we can force horizontal-only motion
 static float s_playerFixedY = 0.5f;
 
+// put near top of Game.cpp or in Collision.h
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <cmath>
+
+struct OBB
+{
+    glm::vec3 center;  // world-space center
+    glm::vec3 axis[3]; // orthonormal axes in world space (unit vectors)
+    float half[3];     // half-lengths along each axis (world units)
+};
+// modelMatrix 是实例的完整世界变换矩阵 (translate*rotate*scale)
+// bboxMin/max are in model-local coordinates
+static OBB BuildOBBFromModel(const glm::vec3 &bboxMin,
+                             const glm::vec3 &bboxMax,
+                             const glm::mat4 &modelMatrix)
+{
+    // local center and half extents
+    glm::vec3 localCenter = (bboxMin + bboxMax) * 0.5f;
+    glm::vec3 localHalf = (bboxMax - bboxMin) * 0.5f;
+
+    // world center
+    glm::vec3 worldCenter = glm::vec3(modelMatrix * glm::vec4(localCenter, 1.0f));
+
+    // linear 3x3 part (rotation * scale)
+    glm::mat3 M3 = glm::mat3(modelMatrix);
+
+    OBB obb;
+    obb.center = worldCenter;
+
+    // for each local axis (unit vectors X,Y,Z), transform by M3:
+    // axis vector in world = normalize(M3 * unit)
+    // half-length in world = length(M3 * unit) * localHalf[i]
+    glm::vec3 ux = glm::vec3(M3 * glm::vec3(1.0f, 0.0f, 0.0f));
+    glm::vec3 uy = glm::vec3(M3 * glm::vec3(0.0f, 1.0f, 0.0f));
+    glm::vec3 uz = glm::vec3(M3 * glm::vec3(0.0f, 0.0f, 1.0f));
+
+    float lenx = glm::length(ux);
+    float leny = glm::length(uy);
+    float lenz = glm::length(uz);
+
+    // Avoid degenerate axes
+    obb.axis[0] = (lenx > 1e-6f) ? ux / lenx : glm::vec3(1, 0, 0);
+    obb.axis[1] = (leny > 1e-6f) ? uy / leny : glm::vec3(0, 1, 0);
+    obb.axis[2] = (lenz > 1e-6f) ? uz / lenz : glm::vec3(0, 0, 1);
+
+    obb.half[0] = lenx * localHalf.x;
+    obb.half[1] = leny * localHalf.y;
+    obb.half[2] = lenz * localHalf.z;
+
+    return obb;
+}
+// returns true if obbA and obbB overlap
+static bool OBBIntersectSAT(const OBB &A, const OBB &B)
+{
+    // vector from A to B
+    glm::vec3 T = B.center - A.center;
+
+    // list of 15 test axes: A.axis[0..2], B.axis[0..2], and cross products
+    // we will test each axis by projecting both boxes onto it
+
+    // convenience lambdas
+    auto projectIntervalRadius = [](const OBB &O, const glm::vec3 &axis) -> float
+    {
+        // axis assumed unit length
+        float r = 0.0f;
+        r += O.half[0] * fabs(glm::dot(O.axis[0], axis));
+        r += O.half[1] * fabs(glm::dot(O.axis[1], axis));
+        r += O.half[2] * fabs(glm::dot(O.axis[2], axis));
+        return r;
+    };
+
+    // test function for an axis (must be normalized)
+    auto testAxis = [&](const glm::vec3 &axis) -> bool
+    {
+        float axisLen2 = glm::dot(axis, axis);
+        if (axisLen2 < 1e-8f)
+            return true; // axis degenerate -> skip test (treat as non-separating)
+        glm::vec3 axisN = axis / sqrt(axisLen2);
+        float dist = fabs(glm::dot(T, axisN));
+        float ra = projectIntervalRadius(A, axisN);
+        float rb = projectIntervalRadius(B, axisN);
+        return dist <= (ra + rb) + 1e-6f; // overlap if true
+    };
+
+    // 3 axes A
+    for (int i = 0; i < 3; i++)
+        if (!testAxis(A.axis[i]))
+            return false;
+    // 3 axes B
+    for (int i = 0; i < 3; i++)
+        if (!testAxis(B.axis[i]))
+            return false;
+    // 9 cross axes
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            glm::vec3 ax = glm::cross(A.axis[i], B.axis[j]);
+            if (!testAxis(ax))
+                return false;
+        }
+    }
+    // no separating axis found -> intersection
+    return true;
+}
+
+// safe absolute dot
+static inline float AbsDot(const glm::vec3 &a, const glm::vec3 &b)
+{
+    return fabs(glm::dot(a, b));
+}
+
+struct FallingObjectConfig
+{
+    std::string path;
+    glm::vec3 modelScale;
+};
 glm::vec3 sunDir = glm::normalize(glm::vec3(-0.4f, -1.0f, -0.2f));
 
 glm::mat4 lightView = glm::lookAt(
@@ -23,6 +141,17 @@ glm::mat4 lightProj = glm::ortho(
     1.0f, 30.0f);
 
 glm::mat4 lightVP = lightProj * lightView;
+static glm::mat4 MakeModelMatrix(const glm::vec3 &position,
+                                 const glm::vec3 &rotAxis, float rotAngleRad,
+                                 const glm::vec3 &scale)
+{
+    glm::mat4 m(1.0f);
+    m = glm::translate(m, position);
+    if (rotAngleRad != 0.0f)
+        m = glm::rotate(m, rotAngleRad, rotAxis);
+    m = glm::scale(m, scale);
+    return m;
+}
 
 Game::Game()
     : spawnTimer(0.0f), playerDead(false)
@@ -30,6 +159,49 @@ Game::Game()
     // seed RNG with high-resolution clock
     rng.seed((uint32_t)std::chrono::high_resolution_clock::now().time_since_epoch().count());
 }
+bool Game::LoadResources(const std::string &assetsDir)
+{
+    FallingObjectConfig fallingModelsConfig[3] = {
+        {.path = assetsDir + "/models/bucket.obj",
+         .modelScale = glm::vec3(0.2f)},
+        {.path = assetsDir + "/models/jar.obj",
+         .modelScale = glm::vec3(0.2f)},
+        {.path = assetsDir + "/models/teapot.obj",
+         .modelScale = glm::vec3(1.0f)}};
+    bool ok = true;
+    for (int i = 0; i < 3; ++i)
+    {
+        fallingModels[i].modelScale = fallingModelsConfig[i].modelScale;
+        ok &= fallingModels[i].LoadFromFile(fallingModelsConfig[i].path);
+        if (!ok)
+        {
+            std::cerr << "Failed load falling objects: " << fallingModelsConfig[i].path << std::endl;
+        }
+    }
+    std::string floorPath = assetsDir + "/models/floor.obj";
+    ok &= floorModel.LoadFromFile(floorPath);
+    if (!ok)
+    {
+        std::cerr << "Failed load floor: " << floorPath << std::endl;
+    }
+
+    // set reasonable scales if model units differ
+    floorModel.modelScale = glm::vec3(1.0f);
+
+    // compute floorTop from floorModel bbox (world-local bbox)
+    // bboxMin/bboxMax are in model space (apply modelScale when mapping to world)
+    float floorModelTop = floorModel.bboxMax.y * floorModel.modelScale.y;
+    // If your floor model's origin is center and it's placed with translate y = -0.55,
+    // you can compute desired world top. For simplicity, we'll set floorTop to where you want:
+    // For example place floorModel so its top is at -0.5:
+    float desiredTopY = -0.5f;
+    // compute needed base translate and store somewhere or apply in Render.
+    // We'll simply store floorTop for collision calculations:
+    floorTop = desiredTopY;
+
+    return ok;
+}
+
 void Game::InitShadowMap()
 {
     // ===== Shadow map framebuffer =====
@@ -69,6 +241,19 @@ void Game::Reset()
 
     player.color = glm::vec3(1.0f, 0.8f, 0.1f);
     playerDead = false;
+
+    // after loading floorModel and setting floorModel.modelScale
+    float desiredFloorTop = -0.5f; // 你希望地面顶面的 world Y
+    float floorTopLocal = floorModel.bboxMax.y * floorModel.modelScale.y;
+    float floorYOffset = desiredFloorTop - floorTopLocal;
+
+    // store for collision logic
+    this->floorTop = desiredFloorTop;
+    this->floorYOffset = floorYOffset;
+
+    // set floor modelMatrix once
+    glm::vec3 floorPos(0.0f, floorYOffset, 0.0f);
+    floorModel.modelMatrix = MakeModelMatrix(floorPos, glm::vec3(0, 1, 0), 0.0f, floorModel.modelScale);
 }
 
 static float randf(std::mt19937 &rng, float a, float b)
@@ -80,38 +265,33 @@ static float randf(std::mt19937 &rng, float a, float b)
 void Game::SpawnObject()
 {
     Falling f;
-    // spawn X,Z in range [-4,4]
     f.pos.x = randf(rng, -4.0f, 4.0f);
-    // spawn high above camera so it falls into view
     f.pos.y = randf(rng, 4.0f, 7.0f);
     f.pos.z = randf(rng, -4.0f, 4.0f);
 
-    // give some random horizontal velocity so it can fall at an angle
-    float horizontalSpeed = randf(rng, -1.5f, 1.5f);
-    float horizontalSpeedZ = randf(rng, -1.0f, 1.0f);
-    float downwardSpeed = randf(rng, 1.2f, 3.0f);
+    float horizontalSpeed = randf(rng, -1.0f, 1.0f);
+    float horizontalSpeedZ = randf(rng, -0.5f, 0.5f);
+    float downwardSpeed = randf(rng, 0.5f, 1.0f);
     f.vel = glm::vec3(horizontalSpeed, -downwardSpeed, horizontalSpeedZ);
 
-    // random bright-ish color (pick in HSV-like range but here simple)
-    float r = randf(rng, 0.6f, 1.0f);
-    float g = randf(rng, 0.1f, 0.6f);
-    float b = randf(rng, 0.1f, 0.9f);
-    f.color = glm::vec3(r, g, b);
-
-    f.alive = true;
-    f.rot = randf(rng, 0.0f, 6.2831853f); // random start angle 0..2pi
-
-    // random axis, not zero
+    f.rot = randf(rng, 0.0f, 6.2831853f);
     glm::vec3 ax(randf(rng, -1.0f, 1.0f), randf(rng, -1.0f, 1.0f), randf(rng, -1.0f, 1.0f));
     if (glm::length(ax) < 0.001f)
         ax = glm::vec3(0.0f, 1.0f, 0.0f);
     f.rotAxis = glm::normalize(ax);
+    f.rotSpeed = randf(rng, 1.0f, 2.0f);
+    f.alive = true;
 
-    f.rotSpeed = randf(rng, 1.0f, 6.0f); // radians/sec
+    f.modelIndex = rng() % 3; // pick which model to use
+    // compute instance AABB half extents in model-space then in world
+    f.modelScale = fallingModels[f.modelIndex].modelScale;
+    f.halfExtents = 0.5f * (fallingModels[f.modelIndex].bboxMax - fallingModels[f.modelIndex].bboxMin);
+
+    // optional color multiplier (for tinting)
+    f.color = glm::vec3(randf(rng, 0.6f, 1.0f), randf(rng, 0.1f, 0.6f), randf(rng, 0.1f, 0.9f));
 
     falling.push_back(f);
 }
-
 void Game::Update(float dt, const bool keys[1024], const glm::vec3 &cameraFront, const glm::vec3 &cameraUp)
 {
     if (playerDead)
@@ -140,318 +320,280 @@ void Game::Update(float dt, const bool keys[1024], const glm::vec3 &cameraFront,
         SpawnObject();
     }
 
+    // 更新玩家 modelMatrix（把猫脚底对齐地面）
+    {
+        float scaleY = playerModel.modelScale.y; // uniform or per-axis
+        float modelWorldY = floorTop - playerModel.bboxMin.y * scaleY;
+        glm::vec3 modelPosWorld(player.pos.x, modelWorldY, player.pos.z);
+        float rotRad = glm::radians(180.0f);
+        player.modelMatrix = MakeModelMatrix(modelPosWorld, glm::vec3(0, 1, 0), rotRad, playerModel.modelScale);
+    }
+
+    // 计算玩家的 AABB（world-space half extents），用于碰撞检测
+    glm::vec3 playerHalfExtents = (playerModel.bboxMax - playerModel.bboxMin) * 0.5f * playerModel.modelScale;
+    glm::vec3 playerMin = player.pos - playerHalfExtents;
+    glm::vec3 playerMax = player.pos + playerHalfExtents;
+
+    auto computeBoundingSphereRadius = [](const glm::vec3 &half) -> float
+    {
+        // approximate radius = length of half-extents vector
+        return glm::length(half);
+    };
+
+    // build player OBB once per frame (use player.modelMatrix and playerModel.bboxMin/Max)
+    OBB playerOBB = BuildOBBFromModel(playerModel.bboxMin, playerModel.bboxMax, player.modelMatrix);
+    float playerSphereR = computeBoundingSphereRadius(glm::vec3(playerOBB.half[0], playerOBB.half[1], playerOBB.half[2]));
+
+    for (size_t i = 0; i < falling.size(); ++i)
+    {
+        auto &o = falling[i];
+        std::cout << "[DBG] inst " << i
+                  << " alive=" << o.alive
+                  << " pos=(" << o.pos.x << "," << o.pos.y << "," << o.pos.z << ")"
+                  << " modelScale=(" << o.modelScale.x << "," << o.modelScale.y << "," << o.modelScale.z << ")"
+                  << " halfExt=(" << o.halfExtents.x << "," << o.halfExtents.y << "," << o.halfExtents.z << ")"
+                  << std::endl;
+        // build modelMatrix if you expect it prebuilt:
+        glm::mat4 mm = o.modelMatrix;
+        glm::vec4 center = mm * glm::vec4((fallingModels[o.modelIndex].bboxMin + fallingModels[o.modelIndex].bboxMax) * 0.5f, 1.0f);
+        std::cout << "     prototype bboxMin=" << fallingModels[o.modelIndex].bboxMin.y
+                  << " bboxMax=" << fallingModels[o.modelIndex].bboxMax.y
+                  << " world centerY=" << center.y << std::endl;
+    }
+
     for (auto &o : falling)
     {
         if (!o.alive)
             continue;
-        // gravity
+
+        // 1) physics integrate
         o.vel += glm::vec3(0.0f, -9.8f * dt * 0.2f, 0.0f);
         o.pos += o.vel * dt;
+        if (fabs(o.rotSpeed) > 1e-6f)
+            o.rot += o.rotSpeed * dt;
 
-        // update rotation
-        o.rot += o.rotSpeed * dt;
-
-        // simple AABB collision with player (player y is fixed, so this still works)
-        glm::vec3 amin = o.pos - glm::vec3(0.25f);
-        glm::vec3 amax = o.pos + glm::vec3(0.25f);
-        glm::vec3 bmin = player.pos - glm::vec3(0.3f);
-        glm::vec3 bmax = player.pos + glm::vec3(0.3f);
-        bool hit = (amin.x <= bmax.x && amax.x >= bmin.x) &&
-                   (amin.y <= bmax.y && amax.y >= bmin.y) &&
-                   (amin.z <= bmax.z && amax.z >= bmin.z);
-        if (hit)
-            playerDead = true;
-
-        // landing on floor: compute floor top and falling half-size
-        const float fallHalf = 0.25f; // falling cube scaled by 0.5 => half-size = 0.25
-
-        if (o.pos.y - fallHalf <= floorTop)
+        // 2) immediately update modelMatrix from current pos/rot/scale
         {
-            // place it on surface and stop vertical movement
-            o.pos.y = floorTop + fallHalf;
-            o.vel.y = 0.0f;
-            // optionally remove or keep - here we mark as not alive to remove
-            o.alive = false;
+            glm::mat4 mm(1.0f);
+            mm = glm::translate(mm, o.pos);
+            mm = glm::rotate(mm, o.rot, o.rotAxis);
+            mm = glm::scale(mm, o.modelScale);
+            o.modelMatrix = mm;
         }
 
-        if (o.pos.y < -6.0f)
-            o.alive = false;
-    }
+        // 3) build object OBB from proto bbox and the up-to-date modelMatrix
+        const glm::vec3 &pbMin = fallingModels[o.modelIndex].bboxMin;
+        const glm::vec3 &pbMax = fallingModels[o.modelIndex].bboxMax;
+        OBB objOBB = BuildOBBFromModel(pbMin, pbMax, o.modelMatrix);
 
-    // remove dead
+        // (optional) update instance halfExtents from OBB for consistent later use
+        o.halfExtents = glm::vec3(objOBB.half[0], objOBB.half[1], objOBB.half[2]);
+
+        // 4) broadphase sphere test vs player (playerOBB must be computed once per frame outside loop)
+        float objSphereR = glm::length(glm::vec3(objOBB.half[0], objOBB.half[1], objOBB.half[2]));
+        float centersDist = glm::length(objOBB.center - playerOBB.center);
+        if (centersDist <= (playerSphereR + objSphereR))
+        {
+            // narrowphase SAT test (OBB vs OBB)
+            if (OBBIntersectSAT(playerOBB, objOBB))
+            {
+                playerDead = true;
+                std::cout << "[Collide] player hit by falling object\n";
+                o.alive = false;
+                break;
+            }
+        }
+
+        // 5) ground contact test using OBB bottom (more robust than o.pos +/- halfExtents)
+        float objBottomY = objOBB.center.y - objOBB.half[1];
+        const float EPS = 1e-4f;
+        if (objBottomY <= floorTop + EPS)
+        {
+            // snap object so its bottom sits exactly on floorTop
+            o.pos.y = floorTop + objOBB.half[1];
+
+            // update modelMatrix to reflect snapped position
+            glm::mat4 mm(1.0f);
+            mm = glm::translate(mm, o.pos);
+            mm = glm::rotate(mm, o.rot, o.rotAxis);
+            mm = glm::scale(mm, o.modelScale);
+            o.modelMatrix = mm;
+
+            o.vel = glm::vec3(0.0f);
+            // optionally zero angular motion
+            // o.rotSpeed = 0.0f; o.angVel = glm::vec3(0.0f);
+
+            o.alive = false; // or set state = LANDED if you want to keep it visible
+            continue;
+        }
+
+        // If we reach here, the object continues falling that frame
+    }
+    // remove dead (landed or collided) instances
     falling.erase(std::remove_if(falling.begin(), falling.end(),
                                  [](const Falling &f)
                                  { return !f.alive; }),
                   falling.end());
 }
+
 void Game::Render(unsigned int shader3D, const glm::vec3 &cameraPos)
 {
-
-    // --------- 1) Compute light (sun) matrices ----------
-    // directional sun direction (from world toward sun): choose as needed
+    /* =========================================================
+       1. 计算太阳光矩阵（Directional Light）
+       ========================================================= */
     glm::vec3 sunDir = glm::normalize(glm::vec3(-0.4f, -1.0f, -0.2f));
 
-    // position the "sun camera" at -sunDir * dist looking at origin (or scene center)
-    float lightDist = 12.0f;
-    glm::mat4 lightView = glm::lookAt(-sunDir * lightDist, glm::vec3(0.0f), glm::vec3(0, 1, 0));
+    float lightDist = 20.0f;
+    glm::mat4 lightView = glm::lookAt(
+        -sunDir * lightDist,
+        glm::vec3(0.0f),
+        glm::vec3(0, 1, 0));
 
-    // orthographic projection for directional light
-    float orthoSize = 8.0f;
-    glm::mat4 lightProj = glm::ortho(-orthoSize, orthoSize, -orthoSize, orthoSize, 1.0f, 40.0f);
+    float orthoSize = 15.0f;
+    glm::mat4 lightProj = glm::ortho(
+        -orthoSize, orthoSize,
+        -orthoSize, orthoSize,
+        1.0f, 50.0f);
 
     glm::mat4 lightVP = lightProj * lightView;
 
-    // preserve current viewport so we can restore it after shadow pass
     GLint prevViewport[4];
     glGetIntegerv(GL_VIEWPORT, prevViewport);
 
-    // --------- 2) Shadow pass: render depth from light's POV ----------
-    if (depthFBO != 0 && shadowShader != 0)
+    /* =========================================================
+       2. Shadow Pass（只画深度，只画真实模型）
+       ========================================================= */
+    if (depthFBO && shadowShader)
     {
         glViewport(0, 0, SHADOW_SIZE, SHADOW_SIZE);
         glBindFramebuffer(GL_FRAMEBUFFER, depthFBO);
         glClear(GL_DEPTH_BUFFER_BIT);
 
-        // optional: bias via polygon offset to reduce peter-panning
         glEnable(GL_POLYGON_OFFSET_FILL);
-        glPolygonOffset(1.0f, 1.0f);
+        glPolygonOffset(2.0f, 4.0f);
 
         glUseProgram(shadowShader);
-        GLint locLightVP = glGetUniformLocation(shadowShader, "uLightVP");
-        if (locLightVP >= 0)
-            glUniformMatrix4fv(locLightVP, 1, GL_FALSE, &lightVP[0][0]);
+        glUniformMatrix4fv(
+            glGetUniformLocation(shadowShader, "uLightVP"),
+            1, GL_FALSE, &lightVP[0][0]);
 
-        // Render scene geometry for depth (player, floor, falling)
-        // Player model
+        auto setShadowModel = [&](const glm::mat4 &m)
         {
+            glUniformMatrix4fv(
+                glGetUniformLocation(shadowShader, "uModel"),
+                1, GL_FALSE, &m[0][0]);
+        };
 
-            float scaleY = playerModel.modelScale.y;
-            const float floorTop = -0.5f;
-            player.pos.y = floorTop - playerModel.bboxMin.y * scaleY;
-            glm::vec3 bboxMin = playerModel.bboxMin; // must be set in StaticModel during load
-            float scale = playerModel.modelScale.x;  // assume uniform scale
-            float yOffset = -bboxMin.y * scale;      // positive: bring feet to y=0
-            glm::mat4 modelMat = glm::mat4(1.0f);
-            modelMat = glm::translate(modelMat, glm::vec3(player.pos.x, player.pos.y + yOffset, player.pos.z));
-            modelMat = glm::rotate(modelMat, glm::radians(180.0f), glm::vec3(0, 1, 0));
-            modelMat = glm::scale(modelMat, playerModel.modelScale);
-
-            GLint locModel = glGetUniformLocation(shadowShader, "uModel");
-            if (locModel >= 0)
-                glUniformMatrix4fv(locModel, 1, GL_FALSE, &modelMat[0][0]);
-
-            // Draw model; StaticModel::Draw should bind its VAO and issue glDrawElements.
-            // It may set uniforms if they exist, but shadowShader ignores color/texture.
-            playerModel.Draw(shadowShader);
+        /* ---- floor ---- */
+        {
+            glm::mat4 m = floorModel.modelMatrix; // 已在初始化阶段算好
+            setShadowModel(m);
+            floorModel.DrawDepth();
         }
 
-        // Ensure cube VAO bound for floor/cubes
-        if (cubeVAO != 0)
-            glBindVertexArray(cubeVAO);
-
-        // floor
+        /* ---- player ---- */
         {
-            glm::mat4 model = glm::mat4(1.0f);
-            model = glm::translate(model, glm::vec3(0.0f, -0.55f, 0.0f));
-            model = glm::scale(model, glm::vec3(12.0f, 0.1f, 12.0f));
-            GLint locModel = glGetUniformLocation(shadowShader, "uModel");
-            if (locModel >= 0)
-                glUniformMatrix4fv(locModel, 1, GL_FALSE, &model[0][0]);
-
-            // Draw cube geometry (positions at location 0)
-            glDrawArrays(GL_TRIANGLES, 0, 36);
+            glm::mat4 m = player.modelMatrix;
+            setShadowModel(m);
+            playerModel.DrawDepth();
         }
 
-        // falling cubes
+        /* ---- falling objects ---- */
         for (auto &o : falling)
         {
-            glm::mat4 model = glm::mat4(1.0f);
-            model = glm::translate(model, o.pos);
-            model = glm::rotate(model, o.rot, o.rotAxis);
-            model = glm::scale(model, glm::vec3(0.5f));
-            GLint locModel = glGetUniformLocation(shadowShader, "uModel");
-            if (locModel >= 0)
-                glUniformMatrix4fv(locModel, 1, GL_FALSE, &model[0][0]);
-
-            glDrawArrays(GL_TRIANGLES, 0, 36);
+            glm::mat4 m = o.modelMatrix;
+            setShadowModel(m);
+            fallingModels[o.modelIndex].DrawDepth();
         }
 
-        // restore state
-        glBindVertexArray(0);
-        glUseProgram(0);
         glDisable(GL_POLYGON_OFFSET_FILL);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
-        // restore viewport
-        glViewport(prevViewport[0], prevViewport[1], prevViewport[2], prevViewport[3]);
-    }
-    else
-    {
-        // If shadow resources not initialized, ensure viewport is correct (safe-guard)
-        glViewport(prevViewport[0], prevViewport[1], prevViewport[2], prevViewport[3]);
+        glViewport(prevViewport[0], prevViewport[1],
+                   prevViewport[2], prevViewport[3]);
     }
 
-    // --------- 3) Normal render pass (camera) ----------
+    /* =========================================================
+       3. Main Pass（正常渲染）
+       ========================================================= */
     glUseProgram(shader3D);
 
-    // upload directional light, camera and lightVP for shadow sampling
-    GLint locViewPos = glGetUniformLocation(shader3D, "uViewPos");
-    if (locViewPos >= 0)
-        glUniform3fv(locViewPos, 1, &cameraPos[0]);
+    /* ---- camera & light ---- */
+    glUniform3fv(
+        glGetUniformLocation(shader3D, "uViewPos"),
+        1, &cameraPos[0]);
 
-    GLint locLightDir = glGetUniformLocation(shader3D, "uLightDir");
-    if (locLightDir >= 0)
-        glUniform3fv(locLightDir, 1, &sunDir[0]);
+    glUniform3fv(
+        glGetUniformLocation(shader3D, "uLightDir"),
+        1, &sunDir[0]);
 
-    GLint locLightColor = glGetUniformLocation(shader3D, "uLightColor");
-    if (locLightColor >= 0)
-        glUniform3f(locLightColor, 1.0f, 0.98f, 0.9f);
+    glUniform3f(
+        glGetUniformLocation(shader3D, "uLightColor"),
+        1.0f, 0.98f, 0.9f);
 
-    GLint locLightIntensity = glGetUniformLocation(shader3D, "uLightIntensity");
-    if (locLightIntensity >= 0)
-        glUniform1f(locLightIntensity, 1.2f);
+    glUniform1f(
+        glGetUniformLocation(shader3D, "uLightIntensity"),
+        1.2f);
 
-    // supply lightVP and shadow map to shader
-    GLint locLightVP_main = glGetUniformLocation(shader3D, "uLightVP");
-    if (locLightVP_main >= 0)
-        glUniformMatrix4fv(locLightVP_main, 1, GL_FALSE, &lightVP[0][0]);
+    /* ---- shadow uniforms ---- */
+    glUniformMatrix4fv(
+        glGetUniformLocation(shader3D, "uLightVP"),
+        1, GL_FALSE, &lightVP[0][0]);
 
-    // bind depth map to texture unit 3 for shadow lookup
-    if (depthMap != 0)
+    glActiveTexture(GL_TEXTURE3);
+    glBindTexture(GL_TEXTURE_2D, depthMap);
+    glUniform1i(
+        glGetUniformLocation(shader3D, "uShadowMap"),
+        3);
+
+    auto setModelAndNormal = [&](const glm::mat4 &m)
     {
-        glActiveTexture(GL_TEXTURE3);
-        glBindTexture(GL_TEXTURE_2D, depthMap);
-        GLint locShadow = glGetUniformLocation(shader3D, "uShadowMap");
-        if (locShadow >= 0)
-            glUniform1i(locShadow, 3);
+        glUniformMatrix4fv(
+            glGetUniformLocation(shader3D, "uModel"),
+            1, GL_FALSE, &m[0][0]);
+
+        glm::mat3 normalMat = glm::transpose(glm::inverse(glm::mat3(m)));
+        glUniformMatrix3fv(
+            glGetUniformLocation(shader3D, "uNormalMat"),
+            1, GL_FALSE, &normalMat[0][0]);
+    };
+    glEnableVertexAttribArray(1); // normal attribute
+    /* ---- floor ---- */
+    {
+        setModelAndNormal(floorModel.modelMatrix);
+
+        glUniform1i(glGetUniformLocation(shader3D, "uHasDiffuse"), 1);
+        glUniform1i(glGetUniformLocation(shader3D, "uUseAlphaTest"), 0);
+        glUniform1i(glGetUniformLocation(shader3D, "uDiffuseMap"), 0);
+
+        glActiveTexture(GL_TEXTURE0);
+        floorModel.Draw(shader3D);
     }
 
-    // helper to set uModel + uNormalMat for shader3D
-    auto setModelAndNormal = [&](const glm::mat4 &modelMat)
+    /* ---- player ---- */
     {
-        GLint locModel = glGetUniformLocation(shader3D, "uModel");
-        if (locModel >= 0)
-            glUniformMatrix4fv(locModel, 1, GL_FALSE, &modelMat[0][0]);
+        setModelAndNormal(player.modelMatrix);
 
-        glm::mat3 normalMat = glm::transpose(glm::inverse(glm::mat3(modelMat)));
-        GLint locNormal = glGetUniformLocation(shader3D, "uNormalMat");
-        if (locNormal >= 0)
-            glUniformMatrix3fv(locNormal, 1, GL_FALSE, &normalMat[0][0]);
-    };
+        glUniform1i(glGetUniformLocation(shader3D, "uHasDiffuse"), 1);
+        glUniform1i(glGetUniformLocation(shader3D, "uUseAlphaTest"), 1);
+        glUniform1f(glGetUniformLocation(shader3D, "uAlphaCutoff"), 0.3f);
+        glUniform1i(glGetUniformLocation(shader3D, "uDiffuseMap"), 0);
 
-    // ---------- draw player (with textures) ----------
-    {
-        glm::mat4 modelMat = glm::mat4(1.0f);
-        modelMat = glm::translate(modelMat, player.pos);
-        modelMat = glm::rotate(modelMat, glm::radians(180.0f), glm::vec3(0, 1, 0));
-        modelMat = glm::scale(modelMat, playerModel.modelScale);
-
-        setModelAndNormal(modelMat);
-
-        GLint locHasDiffuse = glGetUniformLocation(shader3D, "uHasDiffuse");
-        GLint locUseAlphaTest = glGetUniformLocation(shader3D, "uUseAlphaTest");
-        GLint locAlphaCutoff = glGetUniformLocation(shader3D, "uAlphaCutoff");
-        GLint locMatDiffuse = glGetUniformLocation(shader3D, "uMatDiffuse");
-        GLint locDiffuseMap = glGetUniformLocation(shader3D, "uDiffuseMap");
-
-        if (locHasDiffuse >= 0)
-            glUniform1i(locHasDiffuse, 1);
-        if (locUseAlphaTest >= 0)
-            glUniform1i(locUseAlphaTest, 1);
-        if (locAlphaCutoff >= 0)
-            glUniform1f(locAlphaCutoff, 0.3f);
-        if (locMatDiffuse >= 0)
-            glUniform3f(locMatDiffuse, 1.0f, 1.0f, 1.0f);
-        if (locDiffuseMap >= 0)
-            glUniform1i(locDiffuseMap, 0);
-
-        // ensure texture unit 0 is active and playerModel binds there
         glActiveTexture(GL_TEXTURE0);
         playerModel.Draw(shader3D);
-
-        // unbind
-        glBindTexture(GL_TEXTURE_2D, 0);
     }
 
-    // ---------- draw floor + falling cubes ----------
-    if (cubeVAO != 0)
-        glBindVertexArray(cubeVAO);
-
-    GLint locHasDiffuse_main = glGetUniformLocation(shader3D, "uHasDiffuse");
-    GLint locUseAlphaTest_main = glGetUniformLocation(shader3D, "uUseAlphaTest");
-    GLint locMatDiffuse_main = glGetUniformLocation(shader3D, "uMatDiffuse");
-
-    if (locHasDiffuse_main >= 0)
-        glUniform1i(locHasDiffuse_main, 0);
-    if (locUseAlphaTest_main >= 0)
-        glUniform1i(locUseAlphaTest_main, 0);
-
-    // give cube a constant normal if it has none
-    glDisableVertexAttribArray(1);
-    glVertexAttrib3f(1, 0.0f, 1.0f, 0.0f);
-
-    // floor
-    {
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(0.0f, -0.55f, 0.0f));
-        model = glm::scale(model, glm::vec3(12.0f, 0.1f, 12.0f));
-        setModelAndNormal(model);
-
-        if (locMatDiffuse_main >= 0)
-            glUniform3f(locMatDiffuse_main, 0.5f, 0.5f, 0.4f);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-    }
-
-    // falling cubes
+    /* ---- falling objects ---- */
     for (auto &o : falling)
     {
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, o.pos);
-        model = glm::rotate(model, o.rot, o.rotAxis);
-        model = glm::scale(model, glm::vec3(0.5f));
-        setModelAndNormal(model);
+        setModelAndNormal(o.modelMatrix);
 
-        if (locMatDiffuse_main >= 0)
-            glUniform3f(locMatDiffuse_main, o.color.r, o.color.g, o.color.b);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
+        glUniform1i(glGetUniformLocation(shader3D, "uHasDiffuse"), 1);
+        glUniform1i(glGetUniformLocation(shader3D, "uUseAlphaTest"), 0);
+        glUniform1i(glGetUniformLocation(shader3D, "uDiffuseMap"), 0);
+
+        glActiveTexture(GL_TEXTURE0);
+        fallingModels[o.modelIndex].Draw(shader3D);
     }
 
-    glBindVertexArray(0);
-
-    // re-enable attrib 1 if other code expects it as per-vertex
-    glEnableVertexAttribArray(1);
-}
-
-void Game::RenderSceneGeometry(unsigned int shader)
-{
-    // player
-    glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, player.pos);
-    model = glm::rotate(model, glm::radians(180.f), {0, 1, 0});
-    model = glm::scale(model, playerModel.modelScale);
-
-    glUniformMatrix4fv(glGetUniformLocation(shader, "uModel"),
-                       1, GL_FALSE, &model[0][0]);
-    playerModel.Draw(shader);
-
-    // floor
-    model = glm::mat4(1.0f);
-    model = glm::translate(model, {0, -0.55f, 0});
-    model = glm::scale(model, {12, 0.1f, 12});
-
-    glUniformMatrix4fv(glGetUniformLocation(shader, "uModel"),
-                       1, GL_FALSE, &model[0][0]);
-    glDrawArrays(GL_TRIANGLES, 0, 36);
-
-    // falling cubes
-    for (auto &o : falling)
-    {
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, o.pos);
-        model = glm::rotate(model, o.rot, o.rotAxis);
-        model = glm::scale(model, glm::vec3(0.5f));
-
-        glUniformMatrix4fv(glGetUniformLocation(shader, "uModel"),
-                           1, GL_FALSE, &model[0][0]);
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-    }
+    glBindTexture(GL_TEXTURE_2D, 0);
 }

@@ -125,8 +125,6 @@ int main()
     glEnable(GL_DEPTH_TEST);
     glDisable(GL_BLEND);
     glEnable(GL_FRAMEBUFFER_SRGB);
-    // todo: add object shader, cat shader by Assimp
-    // compile shaders
     std::string base = GetExecutableDir();
     Audio audio;
     audio.Init();
@@ -141,6 +139,7 @@ int main()
     UI ui;
     ui.Init((base + "/assets/fonts/Roboto-Regular.ttf").c_str(), 48); // ensure assets/Roboto-Regular.ttf exists relative to build dir
     Game game;
+    game.LoadResources(base + "/assets");
     game.shadowShader = shadowShader.ID;
     game.Reset();
     game.InitShadowMap();
@@ -283,9 +282,6 @@ int main()
             shader3D.use();
             shader3D.setMat4("uView", view);
             shader3D.setMat4("uProj", proj);
-
-            // set per-vertex color attribute as constant or shaader uniform as your Game::Render expects
-            glVertexAttrib3f(1, 1.0f, 1.0f, 1.0f);
 
             // now render the game (Game::Render should bind VAO and use shader uniforms)
             game.Render(shader3D.ID, cameraPos);

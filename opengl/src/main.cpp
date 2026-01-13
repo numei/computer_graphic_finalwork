@@ -8,8 +8,13 @@
 #include <mach-o/dyld.h>
 #include <unistd.h>
 #elif _WIN32
+#define WIN32_LEAN_AND_MEAN // Reduce Windows.h includes
 #include <windows.h>
 #include <direct.h>
+// Undefine PlaySound macro to avoid conflict with Audio::PlaySound
+#ifdef PlaySound
+#undef PlaySound
+#endif
 #else
 #include <unistd.h>
 #include <limits.h>
@@ -143,7 +148,9 @@ int main()
     game.shadowShader = shadowShader.ID;
     game.Reset();
     game.InitShadowMap();
-    game.LoadPlayerModel((base + "/assets/models/walk_cat2.obj").c_str());
+    // Load walk_cat2.obj model file
+    std::string modelPath = base + "/assets/models/walk_cat2.obj";
+    game.LoadPlayerModel(modelPath.c_str());
     game.playerModel.modelScale = glm::vec3(0.5f);
     std::vector<float> data;
 

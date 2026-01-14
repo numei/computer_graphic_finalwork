@@ -44,6 +44,14 @@ static glm::vec3 camVel = glm::vec3(0.0f);
 glm::vec3 lightPos = glm::vec3(3.0f, 6.0f, 3.0f);
 bool firstPerson = false;
 int lastV = GLFW_RELEASE;
+bool freeCamera = false; // Free camera mode flag
+int lastKey1 = GLFW_RELEASE;
+int lastKey2 = GLFW_RELEASE;
+// Free camera position and orientation
+static glm::vec3 freeCamPos = glm::vec3(0.0f, 8.0f, 15.0f); // Start higher and further back to see the scene
+static float freeCamYaw = -90.0f;
+static float freeCamPitch = -25.0f; // Look slightly down to see the floor
+static bool freeCamMouseCaptured = false;
 enum class State
 {
     MENU,
@@ -195,7 +203,46 @@ int main()
         float dt = std::chrono::duration<float>(now - last).count();
         last = now;
 
-        if (keys[GLFW_KEY_V] && lastV == GLFW_RELEASE)
+        // Handle free camera mode switching (only in MENU or GAMEOVER state)
+        if (state != State::PLAYING)
+        {
+            // Press 2 to enter free camera mode
+            if (keys[GLFW_KEY_2] && lastKey2 == GLFW_RELEASE)
+            {
+                freeCamera = true;
+                freeCamMouseCaptured = true;
+                glfwSetInputMode(win, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+                firstMouse = true; // Reset mouse for free camera
+                lastKey2 = GLFW_PRESS;
+            }
+            if (!keys[GLFW_KEY_2])
+                lastKey2 = GLFW_RELEASE;
+
+            // Press 1 to exit free camera mode (return to normal view)
+            if (keys[GLFW_KEY_1] && lastKey1 == GLFW_RELEASE)
+            {
+                freeCamera = false;
+                freeCamMouseCaptured = false;
+                glfwSetInputMode(win, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+                firstPerson = false;
+                thirdPersonInit(); // Reset to third person view
+                lastKey1 = GLFW_PRESS;
+            }
+            if (!keys[GLFW_KEY_1])
+                lastKey1 = GLFW_RELEASE;
+        }
+        else
+        {
+            // In PLAYING state, disable free camera if it was active
+            if (freeCamera)
+            {
+                freeCamera = false;
+                freeCamMouseCaptured = false;
+                glfwSetInputMode(win, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+            }
+        }
+
+        if (keys[GLFW_KEY_V] && lastV == GLFW_RELEASE && !freeCamera)
         {
             firstPerson = !firstPerson;
             if (firstPerson)
@@ -207,7 +254,19 @@ int main()
         if (!keys[GLFW_KEY_V])
             lastV = GLFW_RELEASE;
         if (keys[GLFW_KEY_ESCAPE])
-            glfwSetWindowShouldClose(win, true);
+        {
+            if (freeCamera)
+            {
+                // Exit free camera mode on ESC
+                freeCamera = false;
+                freeCamMouseCaptured = false;
+                glfwSetInputMode(win, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+            }
+            else
+            {
+                glfwSetWindowShouldClose(win, true);
+            }
+        }
 
         // get window size and cursor in window coords
         int winW, winH;
@@ -222,7 +281,11 @@ int main()
 
         // pass window coords into UI (note changed function signature: last param is outAction)
         int uiAction = 0;
-        ui.UpdateMouse(mx, my, mouseDown, winW, winH, &uiAction, state == State::GAMEOVER);
+        if (!freeCamera) // Only update UI if not in free camera mode
+        {
+            ui.UpdateMouse(mx, my, mouseDown, winW, winH, &uiAction, state == State::GAMEOVER);
+        }
+
         if (state == State::MENU)
         {
             if (uiAction == 1)
@@ -259,31 +322,80 @@ int main()
         glClearColor(0.08f, 0.05f, 0.03f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        // Update free camera movement
+        if (freeCamera)
+        {
+            // Calculate free camera front direction
+            glm::vec3 freeCamFront;
+            freeCamFront.x = cos(glm::radians(freeCamYaw)) * cos(glm::radians(freeCamPitch));
+            freeCamFront.y = sin(glm::radians(freeCamPitch));
+            freeCamFront.z = sin(glm::radians(freeCamYaw)) * cos(glm::radians(freeCamPitch));
+            freeCamFront = glm::normalize(freeCamFront);
+
+            // Calculate right and up vectors
+            glm::vec3 freeCamRight = glm::normalize(glm::cross(freeCamFront, glm::vec3(0.0f, 1.0f, 0.0f)));
+            glm::vec3 freeCamUp = glm::normalize(glm::cross(freeCamRight, freeCamFront));
+
+            // Move camera with WASD
+            float freeCamSpeed = 5.0f * dt;
+            if (keys[GLFW_KEY_W])
+                freeCamPos += freeCamSpeed * freeCamFront;
+            if (keys[GLFW_KEY_S])
+                freeCamPos -= freeCamSpeed * freeCamFront;
+            if (keys[GLFW_KEY_A])
+                freeCamPos -= freeCamSpeed * freeCamRight;
+            if (keys[GLFW_KEY_D])
+                freeCamPos += freeCamSpeed * freeCamRight;
+            if (keys[GLFW_KEY_SPACE])
+                freeCamPos += freeCamSpeed * glm::vec3(0.0f, 1.0f, 0.0f);
+            if (keys[GLFW_KEY_LEFT_SHIFT] || keys[GLFW_KEY_RIGHT_SHIFT])
+                freeCamPos -= freeCamSpeed * glm::vec3(0.0f, 1.0f, 0.0f);
+        }
+
         //  Setup projection / view
         glm::mat4 proj = glm::perspective(glm::radians(aspect), (float)W / H, 0.1f, 100.0f);
         glm::mat4 view;
         glm::vec3 cameraPos;
-        if (firstPerson)
+        if (freeCamera)
         {
-            cameraPos = game.player.pos + glm::vec3(0.0f, 0.6f, -0.6f);
+            // Free camera mode
+            glm::vec3 freeCamFront;
+            freeCamFront.x = cos(glm::radians(freeCamYaw)) * cos(glm::radians(freeCamPitch));
+            freeCamFront.y = sin(glm::radians(freeCamPitch));
+            freeCamFront.z = sin(glm::radians(freeCamYaw)) * cos(glm::radians(freeCamPitch));
+            freeCamFront = glm::normalize(freeCamFront);
+            glm::vec3 freeCamRight = glm::normalize(glm::cross(freeCamFront, glm::vec3(0.0f, 1.0f, 0.0f)));
+            glm::vec3 freeCamUp = glm::normalize(glm::cross(freeCamRight, freeCamFront));
+
+            cameraPos = freeCamPos;
+            view = glm::lookAt(freeCamPos, freeCamPos + freeCamFront, freeCamUp);
+        }
+        else if (firstPerson)
+        {
+            // First person camera (only works in PLAYING state)
+            glm::vec3 playerPos = (state == State::PLAYING) ? game.player.pos : glm::vec3(0.0f, 0.5f, 0.0f);
+            cameraPos = playerPos + glm::vec3(0.0f, 0.6f, -0.6f);
             view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
         }
         else
         {
+            // Third person camera (only when not in free camera mode)
+            glm::vec3 playerPos = (state == State::PLAYING) ? game.player.pos : glm::vec3(0.0f, 0.5f, 0.0f);
             glm::vec3 offset = glm::vec3(0.0f, 4.0f, 14.0f);
 
             // smooth follow (lerp)
-            glm::vec3 desiredPos = game.player.pos + offset;
+            glm::vec3 desiredPos = playerPos + offset;
             float followSpeed = 6.0f;
             float t = glm::clamp(followSpeed * dt, 0.0f, 1.0f);
             smoothCamPos = glm::mix(smoothCamPos, desiredPos, t);
 
             // look at slightly above player center
-            glm::vec3 camTarget = game.player.pos + glm::vec3(0.0f, 0.6f, 0.0f);
+            glm::vec3 camTarget = playerPos + glm::vec3(0.0f, 0.6f, 0.0f);
             cameraPos = smoothCamPos;
             view = glm::lookAt(smoothCamPos, camTarget, glm::vec3(0, 1, 0));
         }
-        if (state == State::PLAYING)
+        // Render game scene (always render in free camera mode, or when playing)
+        if (state == State::PLAYING || freeCamera)
         {
             glBindVertexArray(VAO);
             shader3D.use();
@@ -295,8 +407,8 @@ int main()
 
             glBindVertexArray(0);
         }
-        // draw UI overlays
-        if (state != State::PLAYING)
+        // draw UI overlays (only if not in free camera mode)
+        if (state != State::PLAYING && !freeCamera)
         {
             survivalTime = 0.0f;
             // dim overlay
@@ -343,6 +455,38 @@ void cursor_cb(GLFWwindow *w, double x, double y)
     float xpos = static_cast<float>(x);
     float ypos = static_cast<float>(y);
 
+    // Handle free camera mouse look
+    if (freeCamera && freeCamMouseCaptured)
+    {
+        if (firstMouse)
+        {
+            lastX = xpos;
+            lastY = ypos;
+            firstMouse = false;
+        }
+
+        float xoffset = xpos - lastX;
+        float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+        lastX = xpos;
+        lastY = ypos;
+
+        float sensitivity = 0.1f;
+        xoffset *= sensitivity;
+        yoffset *= sensitivity;
+
+        freeCamYaw += xoffset;
+        freeCamPitch += yoffset;
+
+        // Constrain pitch
+        if (freeCamPitch > 89.0f)
+            freeCamPitch = 89.0f;
+        if (freeCamPitch < -89.0f)
+            freeCamPitch = -89.0f;
+
+        return; // Don't update normal camera when in free camera mode
+    }
+
+    // Normal camera mouse look (for first person mode)
     if (firstMouse)
     {
         lastX = xpos;

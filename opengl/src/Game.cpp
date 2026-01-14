@@ -162,12 +162,10 @@ Game::Game()
 bool Game::LoadResources(const std::string &assetsDir)
 {
     FallingObjectConfig fallingModelsConfig[3] = {
-        {.path = assetsDir + "/models/bucket.obj",
-         .modelScale = glm::vec3(0.2f)},
-        {.path = assetsDir + "/models/jar.obj",
-         .modelScale = glm::vec3(0.2f)},
-        {.path = assetsDir + "/models/teapot.obj",
-         .modelScale = glm::vec3(1.0f)}};
+        {assetsDir + "/models/bucket.obj", glm::vec3(0.2f)},
+        {assetsDir + "/models/jar.obj", glm::vec3(0.2f)},
+        {assetsDir + "/models/teapot.obj", glm::vec3(1.0f)}
+    };
     bool ok = true;
     for (int i = 0; i < 3; ++i)
     {

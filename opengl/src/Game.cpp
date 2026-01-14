@@ -347,18 +347,9 @@ void Game::Update(float dt, const bool keys[1024], const glm::vec3 &cameraFront,
     for (size_t i = 0; i < falling.size(); ++i)
     {
         auto &o = falling[i];
-        std::cout << "[DBG] inst " << i
-                  << " alive=" << o.alive
-                  << " pos=(" << o.pos.x << "," << o.pos.y << "," << o.pos.z << ")"
-                  << " modelScale=(" << o.modelScale.x << "," << o.modelScale.y << "," << o.modelScale.z << ")"
-                  << " halfExt=(" << o.halfExtents.x << "," << o.halfExtents.y << "," << o.halfExtents.z << ")"
-                  << std::endl;
         // build modelMatrix if you expect it prebuilt:
         glm::mat4 mm = o.modelMatrix;
         glm::vec4 center = mm * glm::vec4((fallingModels[o.modelIndex].bboxMin + fallingModels[o.modelIndex].bboxMax) * 0.5f, 1.0f);
-        std::cout << "     prototype bboxMin=" << fallingModels[o.modelIndex].bboxMin.y
-                  << " bboxMax=" << fallingModels[o.modelIndex].bboxMax.y
-                  << " world centerY=" << center.y << std::endl;
     }
 
     for (auto &o : falling)

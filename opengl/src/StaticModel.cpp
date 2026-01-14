@@ -5,7 +5,6 @@
 #include <assimp/scene.h>
 #include <iostream>
 #include <cstring>
-
 // stb_image single-file loader
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -40,7 +39,7 @@ GLuint StaticModel::LoadTextureFromFile(const std::string &filename, bool &outHa
     if (!data)
     {
         if (!silent)
-            std::cerr << "stb_image failed to load: " << filename << "\n";
+            std::cerr << "stb_image failed to load: " << filename << " reason: " << stbi_failure_reason() << "\n";
         return 0;
     }
     // if original channels < 4, n may be < 4; but we forced load to 4 -> check alpha content
@@ -172,7 +171,7 @@ bool StaticModel::LoadFromFile(const std::string &path)
             {
                 aiString texPath;
                 mat->GetTexture(aiTextureType_DIFFUSE, 0, &texPath);
-                std::cout << "StaticModel: found diffuse texture path: " << texPath.C_Str() << "\n";
+                // std::cout << "StaticModel: found diffuse texture path: " << texPath.C_Str() << "\n";
                 std::string texFile = texPath.C_Str();
 
                 // Skip embedded textures (GLB files use *0, *1, etc. as placeholders)
@@ -247,9 +246,9 @@ bool StaticModel::LoadFromFile(const std::string &path)
                             {
                                 std::string projectRoot = directory.substr(0, openglPos);
 #ifdef _WIN32
-                                full = projectRoot + "blender\\" + filename;
+                                full = projectRoot + "blender\\textures\\" + filename;
 #else
-                                full = projectRoot + "blender/" + filename;
+                                full = projectRoot + "blender/textures/" + filename;
 #endif
                                 full = normalizePath(full);
                                 dst.diffuseTex = LoadTextureFromFile(full, dst.hasAlpha, false); // show errors for final attempt
@@ -285,7 +284,7 @@ bool StaticModel::LoadFromFile(const std::string &path)
 
                     if (dst.diffuseTex)
                     {
-                        std::cout << "StaticModel: loaded diffuse texture " << full << "\n";
+                        // std::cout << "StaticModel: loaded diffuse texture " << full << "\n";
                         dst.hasDiffuse = true;
                     }
                     else

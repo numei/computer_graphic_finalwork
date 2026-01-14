@@ -149,7 +149,7 @@ int main()
     game.Reset();
     game.InitShadowMap();
     // Load walk_cat2.obj model file
-    std::string modelPath = base + "/assets/models/walk_cat2.obj";
+    std::string modelPath = base + "/assets/models/walk_cat.obj";
     game.LoadPlayerModel(modelPath.c_str());
     game.playerModel.modelScale = glm::vec3(0.5f);
     std::vector<float> data;

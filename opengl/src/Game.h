@@ -14,9 +14,13 @@ struct Falling
     glm::vec3 vel;
     glm::vec3 color;
     bool alive;
-    float rot;         // current rotation angle (radians)
-    glm::vec3 rotAxis; // rotation axis
-    float rotSpeed;    // radians per second
+    float rot;            // current rotation angle (radians)
+    glm::vec3 rotAxis;    // rotation axis
+    float rotSpeed;       // radians per second
+    glm::vec3 modelScale; // instance scale
+    glm::mat4 modelMatrix;
+    glm::vec3 halfExtents; // for AABB collision
+    int modelIndex;        // which model to use (if multiple)
 };
 
 class Game
@@ -24,6 +28,11 @@ class Game
 public:
     Player player;
     std::vector<Falling> falling;
+    StaticModel fallingPrototype; // e.g. crate model
+    StaticModel floorModel;       // detailed floor model
+    StaticModel fallingModels[3]; // optional multiple falling models
+    float floorTop = -0.5f;       // 可在 LoadResources 后用 floorModel bbox 覆盖
+    float floorYOffset;
     float spawnTimer;
     bool playerDead;
 
@@ -36,9 +45,6 @@ public:
 
     // shadow shader program id
     unsigned int shadowShader = 0;
-
-    // render helpers
-    void RenderSceneGeometry(unsigned int shader);
 
     Game();
     void InitShadowMap();
@@ -62,6 +68,8 @@ public:
             playerModel.modelScale = glm::vec3(0.6f);
         }
     }
+
+    bool LoadResources(const std::string &assetsDir);
 
 private:
     unsigned int cubeVAO = 0;

@@ -54,6 +54,7 @@ Thumbs.db
 *.tmp
 *.log
 *.cache
+*.blender1
 
 # OS files
 .DS_Store

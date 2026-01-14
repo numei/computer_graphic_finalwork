@@ -5,7 +5,6 @@
 #include <assimp/scene.h>
 #include <iostream>
 #include <cstring>
-
 // stb_image single-file loader
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
@@ -40,7 +39,7 @@ GLuint StaticModel::LoadTextureFromFile(const std::string &filename, bool &outHa
     if (!data)
     {
         if (!silent)
-            std::cerr << "stb_image failed to load: " << filename << "\n";
+            std::cerr << "stb_image failed to load: " << filename << " reason: " << stbi_failure_reason() << "\n";
         return 0;
     }
     // if original channels < 4, n may be < 4; but we forced load to 4 -> check alpha content
@@ -172,8 +171,9 @@ bool StaticModel::LoadFromFile(const std::string &path)
             {
                 aiString texPath;
                 mat->GetTexture(aiTextureType_DIFFUSE, 0, &texPath);
+                // std::cout << "StaticModel: found diffuse texture path: " << texPath.C_Str() << "\n";
                 std::string texFile = texPath.C_Str();
-                
+
                 // Skip embedded textures (GLB files use *0, *1, etc. as placeholders)
                 if (texFile.empty() || texFile[0] == '*')
                 {
@@ -182,7 +182,7 @@ bool StaticModel::LoadFromFile(const std::string &path)
                 else
                 {
                     std::string full = texFile;
-                    
+
                     // Check if it's an absolute path (works on both Windows and Unix/Mac)
                     // Unix/Mac absolute path: starts with / (check this first, works on all platforms)
                     // Windows absolute path: C:\ or D:\ etc. (or C:/ or D:/)
@@ -192,50 +192,51 @@ bool StaticModel::LoadFromFile(const std::string &path)
                         // Unix/Mac absolute path: starts with /
                         if (texFile[0] == '/')
                             isAbsolute = true;
-                        // Windows absolute path: C:\ or D:\ etc.
-                        #ifdef _WIN32
+// Windows absolute path: C:\ or D:\ etc.
+#ifdef _WIN32
                         else if (texFile.length() >= 3 && texFile[1] == ':' && (texFile[2] == '\\' || texFile[2] == '/'))
                             isAbsolute = true;
-                        #endif
+#endif
                     }
-                    
+
                     if (isAbsolute)
                     {
                         // Extract filename from absolute path
                         size_t lastSlash = texFile.find_last_of("/\\");
                         std::string filename = (lastSlash == std::string::npos) ? texFile : texFile.substr(lastSlash + 1);
-                        
+
                         // Helper function to normalize path separators
-                        auto normalizePath = [](const std::string& path) -> std::string {
+                        auto normalizePath = [](const std::string &path) -> std::string
+                        {
                             std::string result = path;
-                            #ifdef _WIN32
+#ifdef _WIN32
                             // On Windows, replace / with \ for consistency
                             for (size_t i = 0; i < result.length(); ++i)
                             {
                                 if (result[i] == '/')
                                     result[i] = '\\';
                             }
-                            #else
+#else
                             // On Unix/Mac, replace \ with / for consistency
                             for (size_t i = 0; i < result.length(); ++i)
                             {
                                 if (result[i] == '\\')
                                     result[i] = '/';
                             }
-                            #endif
+#endif
                             return result;
                         };
-                        
-                        // Try to find texture in multiple locations
-                        // 1. First try in model directory (same directory as .obj file)
-                        #ifdef _WIN32
+
+// Try to find texture in multiple locations
+// 1. First try in model directory (same directory as .obj file)
+#ifdef _WIN32
                         full = directory + "\\" + filename;
-                        #else
+#else
                         full = directory + "/" + filename;
-                        #endif
+#endif
                         full = normalizePath(full);
                         dst.diffuseTex = LoadTextureFromFile(full, dst.hasAlpha, true); // silent for first attempt
-                        
+
                         if (!dst.diffuseTex)
                         {
                             // 2. If not found, try in blender directory (common case)
@@ -244,15 +245,15 @@ bool StaticModel::LoadFromFile(const std::string &path)
                             if (openglPos != std::string::npos)
                             {
                                 std::string projectRoot = directory.substr(0, openglPos);
-                                #ifdef _WIN32
-                                full = projectRoot + "blender\\" + filename;
-                                #else
-                                full = projectRoot + "blender/" + filename;
-                                #endif
+#ifdef _WIN32
+                                full = projectRoot + "blender\\textures\\" + filename;
+#else
+                                full = projectRoot + "blender/textures/" + filename;
+#endif
                                 full = normalizePath(full);
                                 dst.diffuseTex = LoadTextureFromFile(full, dst.hasAlpha, false); // show errors for final attempt
                             }
-                            
+
                             if (!dst.diffuseTex)
                             {
                                 // 3. Try in assets/models directory
@@ -260,11 +261,11 @@ bool StaticModel::LoadFromFile(const std::string &path)
                                 if (assetsPos != std::string::npos)
                                 {
                                     std::string baseDir = directory.substr(0, assetsPos);
-                                    #ifdef _WIN32
+#ifdef _WIN32
                                     full = baseDir + "assets\\models\\" + filename;
-                                    #else
+#else
                                     full = baseDir + "assets/models/" + filename;
-                                    #endif
+#endif
                                     full = normalizePath(full);
                                     dst.diffuseTex = LoadTextureFromFile(full, dst.hasAlpha, false); // show errors for final attempt
                                 }
@@ -283,7 +284,7 @@ bool StaticModel::LoadFromFile(const std::string &path)
 
                     if (dst.diffuseTex)
                     {
-                        std::cout << "StaticModel: loaded diffuse texture " << full << "\n";
+                        // std::cout << "StaticModel: loaded diffuse texture " << full << "\n";
                         dst.hasDiffuse = true;
                     }
                     else
@@ -464,4 +465,14 @@ void StaticModel::ComputeBBoxRecursive(
     //           << bboxMax.x << ", "
     //           << bboxMax.y << ", "
     //           << bboxMax.z << std::endl;
+}
+
+void StaticModel::DrawDepth() const
+{
+    for (const auto &m : meshes)
+    {
+        glBindVertexArray(m.vao);
+        glDrawElements(GL_TRIANGLES, m.indexCount, GL_UNSIGNED_INT, 0);
+    }
+    glBindVertexArray(0);
 }

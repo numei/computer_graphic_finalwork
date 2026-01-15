@@ -30,8 +30,6 @@ Makefile
 
 # Compiled files
 *.o
-*.obj
-!opengl/assets/models/*.obj  # Allow model .obj files
 *.exe
 *.dll
 *.so

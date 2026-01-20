@@ -88,7 +88,7 @@ static bool OBBIntersectSAT(const OBB &A, const OBB &B)
         float axisLen2 = glm::dot(axis, axis);
         if (axisLen2 < 1e-8f)
             return true; // axis degenerate -> skip test (treat as non-separating)
-        glm::vec3 axisN = axis / sqrt(axisLen2);
+        glm::vec3 axisN = axis / (float)sqrt(axisLen2);
         float dist = fabs(glm::dot(T, axisN));
         float ra = projectIntervalRadius(A, axisN);
         float rb = projectIntervalRadius(B, axisN);

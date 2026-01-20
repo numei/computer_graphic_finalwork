@@ -38,7 +38,7 @@ else()
     find_package(assimp REQUIRED)
     find_package(OpenAL REQUIRED)
     include_directories(${OPENAL_INCLUDE_DIRS})
-endif() 
+endif()
 # Add header files
 set(HEADER_DIR ${PROJECT_SOURCE_DIR}/include/)
 set(LIB_DIR ${PROJECT_SOURCE_DIR}/lib/)
@@ -90,7 +90,7 @@ if(WIN32)
             endif()
         else()
             # Try find_library as fallback
-            find_library(GLFW_LIBRARY 
+            find_library(GLFW_LIBRARY
                 NAMES glfw3 glfw
                 PATHS ${LIB_DIR}
                 NO_DEFAULT_PATH
@@ -107,14 +107,14 @@ if(WIN32)
                     message(STATUS "Will copy glfw3.dll to output directory")
                 endif()
             else()
-                message(FATAL_ERROR 
+                message(FATAL_ERROR
                     "GLFW library not found!\n"
                     "Please install via vcpkg: vcpkg install glfw3:x64-windows\n"
                     "Or download MinGW-compatible GLFW from: https://www.glfw.org/download.html")
             endif()
         endif()
     endif()
-    
+
     # MSVC doesn't need explicit math library linking
     # MinGW would need -lm, but we're using MSVC now
 elseif(APPLE)

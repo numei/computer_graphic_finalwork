@@ -246,9 +246,9 @@ bool StaticModel::LoadFromFile(const std::string &path)
                             {
                                 std::string projectRoot = directory.substr(0, openglPos);
 #ifdef _WIN32
-                                full = projectRoot + "blender\\textures\\" + filename;
+                                full = projectRoot + "Model\\textures\\" + filename;
 #else
-                                full = projectRoot + "blender/textures/" + filename;
+                                full = projectRoot + "Model/textures/" + filename;
 #endif
                                 full = normalizePath(full);
                                 dst.diffuseTex = LoadTextureFromFile(full, dst.hasAlpha, false); // show errors for final attempt
